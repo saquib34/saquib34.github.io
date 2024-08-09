@@ -1,0 +1,24 @@
+name: Deploy to Cloudflare Pages
+
+on:
+  push:
+    branches:
+      - main  # Set this to your default branch
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Setup Cloudflare Pages CLI
+      run: |
+        curl -fsSL https://pages.cloudflare.com/scripts/pages-cli.sh | bash
+
+    - name: Deploy
+      run: |
+        npx wrangler pages publish . --project-name saquib34.github.io --branch main
+      env:
+        CF_PAGES_TOKEN: ${{ secrets.CF_PAGES_TOKEN }}
