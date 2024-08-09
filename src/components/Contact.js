@@ -4,6 +4,7 @@ import { FiUser, FiMail, FiMessageSquare, FiSend } from 'react-icons/fi';
 
 
 const apiKey = process.env.REACT_APP_WEB3FORMS_API_KEY;
+console.log(apiKey);
 
 function Contact() {
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
