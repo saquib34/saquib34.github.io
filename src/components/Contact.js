@@ -38,7 +38,7 @@ function Contact() {
         setResult(result.message || 'Failed to send message. Please try again.');
       }
     } catch (error) {
-      setResult('Failed to send message. Please try again.');
+      setResult('Failed to send message. Please try again. !');
     } finally {
       setIsSubmitting(false);
     }
