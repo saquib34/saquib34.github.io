@@ -2,11 +2,13 @@ import React, { useState, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FiUser, FiMail, FiMessageSquare, FiSend } from 'react-icons/fi';
 
+
+const apiKey = process.env.REACT_APP_WEB3FORMS_API_KEY;
+
 function Contact() {
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
+  const [result, setResult] = useState(''); // Simplified result state
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [success, setSuccess] = useState(false);
-  const [error, setError] = useState('');
   const formRef = useRef(null);
 
   const handleChange = (e) => {
@@ -17,10 +19,10 @@ function Contact() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setResult('Sending....');
 
-    const formDataToSend = new FormData(formRef.current);
-    formDataToSend.append('access_key', process.env.REACT_APP_WEB3FORMS_ACCESS_KEY);
-    formDataToSend.append('to_email', 'shadmanshahin6@gmail.com');
+    const formDataToSend = new FormData(e.target);
+    formDataToSend.append('access_key', apiKey); // Correctly append the API key as a string
 
     try {
       const response = await fetch('https://api.web3forms.com/submit', {
@@ -30,15 +32,13 @@ function Contact() {
 
       const result = await response.json();
       if (result.success) {
-        setSuccess(true);
+        setResult('Form Submitted Successfully');
         setFormData({ name: '', email: '', message: '' });
-        setTimeout(() => setSuccess(false), 5000);
       } else {
-        throw new Error('Failed to send message');
+        setResult(result.message || 'Failed to send message. Please try again.');
       }
-    } catch (err) {
-      setError('Failed to send message. Please try again.');
-      setTimeout(() => setError(''), 5000);
+    } catch (error) {
+      setResult('Failed to send message. Please try again.');
     } finally {
       setIsSubmitting(false);
     }
@@ -55,38 +55,28 @@ function Contact() {
         >
           Let's Connect
         </motion.h2>
-        <motion.div 
+        <motion.div
           className="max-w-xl mx-auto bg-white p-10 rounded-3xl shadow-2xl"
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8 }}
         >
           <AnimatePresence>
-            {success && (
+            {result && (
               <motion.div
-                className="bg-green-100 border-l-4 border-green-500 text-green-700 p-4 mb-6 rounded-lg"
+                className={`p-4 mb-6 rounded-lg ${
+                  result.includes('Failed') ? 'bg-red-100 border-l-4 border-red-500 text-red-700' : 'bg-green-100 border-l-4 border-green-500 text-green-700'
+                }`}
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -20 }}
                 transition={{ duration: 0.5 }}
               >
-                Message sent successfully! We'll get back to you .
-              </motion.div>
-            )}
-            {error && (
-              <motion.div
-                className="bg-red-100 border-l-4 border-red-500 text-red-700 p-4 mb-6 rounded-lg"
-                initial={{ opacity: 0, y: -20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -20 }}
-                transition={{ duration: 0.5 }}
-              >
-                {error}
+                {result}
               </motion.div>
             )}
           </AnimatePresence>
-          <form onSubmit={handleSubmit} ref={formRef}>
-            <input type="hidden" name="access_key" value={process.env.REACT_APP_WEB3FORMS_ACCESS_KEY} />
+          <form onSubmit={handleSubmit} ref={formRef} className="space-y-6">
             <input type="hidden" name="to_email" value="shadmanshahin6@gmail.com" />
             <div className="mb-6">
               <label htmlFor="name" className="block text-gray-700 font-bold mb-2 flex items-center">
