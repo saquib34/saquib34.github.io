@@ -25,11 +25,3 @@ jobs:
       env:
         REACT_APP_WEB3FORMS_ACCESS_KEY: ${{ secrets.REACT_APP_WEB3FORMS_API_KEY }}
       run: npm run build
-
-    # Add deployment steps here if needed
-    # For example, if you're deploying to GitHub Pages:
-    # - name: Deploy
-    #   uses: peaceiris/actions-gh-pages@v3
-    #   with:
-    #     github_token: ${{ secrets.GITHUB_TOKEN }}
-    #     publish_dir: ./build
