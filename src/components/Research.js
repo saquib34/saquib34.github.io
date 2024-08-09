@@ -69,7 +69,7 @@ function Research() {
                   <li>Potential applications in psychology and HCI</li>
                 </ul>
                 <a 
-                  href="#" 
+                  href="/" 
                   className="inline-block bg-blue-500 text-white px-5 py-2 rounded-lg shadow-md hover:bg-blue-600 transition-colors"
                   onClick={(e) => {
                     e.stopPropagation();
