@@ -27,10 +27,3 @@ jobs:
         REACT_APP_WEB3FORMS_API_KEY: ${{ secrets.REACT_APP_WEB3FORMS_API_KEY }}
       run: npm run build
 
-    # Example deployment step (adjust based on your deployment method)
-    - name: Deploy to GitHub Pages
-      if: success() # Ensure this step only runs if the build was successful
-      uses: peaceiris/actions-gh-pages@v3
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./build
