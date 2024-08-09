@@ -2,23 +2,14 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const Navbar = () => {
-// my protfolio nav bar
     return (
-        <nav className="navbar navbar-expand-lg navbar-light bg-light">
-            <div className="container-fluid">
-                <Link to="/" className="navbar-brand">My Portfolio</Link>
-                <div className="collapse navbar-collapse" id="navbarNav">
-                    <ul className="navbar-nav">
-                        <li className="nav-item">
-                            <Link to="/" className="nav-link">Home</Link>
-                        </li>
-                        <li className="nav-item">
-                            <Link to="/about" className="nav-link">About</Link>
-                        </li>
-                        <li className="nav-item">
-                            <Link to="/contact" className="nav-link">Contact</Link>
-                        </li>
-                    </ul>
+        <nav className="bg-gray-800 p-4">
+            <div className="container mx-auto flex justify-between items-center">
+                <Link to="/" className="text-white text-xl font-bold">My Portfolio</Link>
+                <div className="space-x-4">
+                    <Link to="/" className="text-white hover:bg-gray-700 px-3 py-2 rounded-md text-sm font-medium">Home</Link>
+                    <Link to="/about" className="text-white hover:bg-gray-700 px-3 py-2 rounded-md text-sm font-medium">About</Link>
+                    <Link to="/contact" className="text-white hover:bg-gray-700 px-3 py-2 rounded-md text-sm font-medium">Contact</Link>
                 </div>
             </div>
         </nav>

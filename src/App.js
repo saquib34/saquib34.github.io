@@ -1,5 +1,6 @@
 import React from 'react';
 import Navbar from './component/navbar';
+import './index.css'; // or './styles/tailwind.css'
 
 
 function App() {
