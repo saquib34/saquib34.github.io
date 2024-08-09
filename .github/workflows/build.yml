@@ -23,5 +23,5 @@ jobs:
     
     - name: Build
       env:
-        REACT_APP_WEB3FORMS_API_KEY: ${{ secrets.REACT_APP_WEB3FORMS_API_KEY }}
+        REACT_APP_WEB3FORMS_API_KEY: secrets.REACT_APP_WEB3FORMS_API_KEY
       run: npm run build
