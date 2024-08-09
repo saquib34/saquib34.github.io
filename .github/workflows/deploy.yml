@@ -13,12 +13,18 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v3
 
-    - name: Setup Cloudflare Pages CLI
-      run: |
-        curl -fsSL https://pages.cloudflare.com/scripts/pages-cli.sh | bash
+    - name: Setup Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18'  # Or whichever version you prefer
+
+    - name: Install dependencies
+      run: npm ci  # This assumes you have a package-lock.json file
+
+    - name: Install Wrangler
+      run: npm install -g wrangler@latest
 
     - name: Deploy
-      run: |
-        npx wrangler pages publish . --project-name saquib34.github.io --branch main
+      run: wrangler pages deploy . --project-name saquib34.github.io
       env:
-        CF_PAGES_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+        CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
