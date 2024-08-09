@@ -23,7 +23,7 @@ jobs:
     
     - name: Build
       env:
-        REACT_APP_WEB3FORMS_ACCESS_KEY: ${{ secrets.WEB3FORMS_ACCESS_KEY }}
+        REACT_APP_WEB3FORMS_ACCESS_KEY: ${{ secrets.REACT_APP_WEB3FORMS_API_KEY }}
       run: npm run build
 
     # Add deployment steps here if needed
