@@ -24,7 +24,8 @@ jobs:
     - name: Install Wrangler
       run: npm install -g wrangler@latest
 
-    - name: Deploy
-      run: wrangler pages deploy . --project-name saquib34.github.io
+    - name: Deploy to Cloudflare Pages
       env:
-        CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+        CF_API_KEY: ${{ secrets.CF_API_KEY }}
+        CF_ACCOUNT_EMAIL: ${{ secrets.CF_ACCOUNT_EMAIL }}
+      run: wrangler pages deploy . --project-name saquib34.github.io
