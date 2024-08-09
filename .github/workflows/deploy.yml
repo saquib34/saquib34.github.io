@@ -27,5 +27,4 @@ jobs:
     - name: Deploy to Cloudflare Pages
       env:
         CLOUDFLARE_API_KEY: ${{ secrets.CLOUDFLARE_API_KEY }}
-        CLOUDFLARE_ACCOUNT_EMAIL: ${{ secrets.CLOUDFLARE_ACCOUNT_EMAIL }}
       run: wrangler pages deploy . --project-name saquib34.github.io
