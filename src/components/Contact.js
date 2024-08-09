@@ -70,7 +70,7 @@ function Contact() {
                 exit={{ opacity: 0, y: -20 }}
                 transition={{ duration: 0.5 }}
               >
-                Message sent successfully! We'll get back to you soon.
+                Message sent successfully! We'll get back to you .
               </motion.div>
             )}
             {error && (
