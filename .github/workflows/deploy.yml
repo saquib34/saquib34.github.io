@@ -21,4 +21,4 @@ jobs:
       run: |
         npx wrangler pages publish . --project-name saquib34.github.io --branch main
       env:
-        CF_PAGES_TOKEN: ${{ secrets.CF_PAGES_TOKEN }}
+        CF_PAGES_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
