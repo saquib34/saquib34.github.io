@@ -115,7 +115,7 @@ function Hero() {
           </div>
           <div className="flex justify-center space-x-8 mb-12">
             <motion.a
-              href="#" 
+              href="https://www.linkedin.com/in/saquib34" 
               className="text-4xl text-white hover:text-pink-200 transition-colors duration-300"
               whileHover={{ scale: 1.2, rotate: 360 }}
               whileTap={{ scale: 0.9 }}
@@ -123,7 +123,7 @@ function Hero() {
               <FaLinkedin />
             </motion.a>
             <motion.a
-              href="#" 
+              href="https://www.linkedin.com/in/saquib34"
               className="text-4xl text-white hover:text-pink-200 transition-colors duration-300"
               whileHover={{ scale: 1.2, rotate: 360 }}
               whileTap={{ scale: 0.9 }}
@@ -131,7 +131,7 @@ function Hero() {
               <FaGithub />
             </motion.a>
             <motion.a
-              href="#" 
+              href="shadmanshahin6@gmail.com" 
               className="text-4xl text-white hover:text-pink-200 transition-colors duration-300"
               whileHover={{ scale: 1.2, rotate: 360 }}
               whileTap={{ scale: 0.9 }}

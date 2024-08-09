@@ -11,9 +11,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
+    - name: Checkout code
+      uses: actions/checkout@v2
     
-    - name: Use Node.js
+    - name: Set up Node.js
       uses: actions/setup-node@v2
       with:
         node-version: '20.10'  # or whatever version you're using
@@ -23,5 +24,13 @@ jobs:
     
     - name: Build
       env:
-        REACT_APP_WEB3FORMS_API_KEY: secrets.REACT_APP_WEB3FORMS_API_KEY
+        REACT_APP_WEB3FORMS_API_KEY: ${{ secrets.REACT_APP_WEB3FORMS_API_KEY }}
       run: npm run build
+
+    # Example deployment step (adjust based on your deployment method)
+    - name: Deploy to GitHub Pages
+      if: success() # Ensure this step only runs if the build was successful
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./build
