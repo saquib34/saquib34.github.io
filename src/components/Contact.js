@@ -1,12 +1,13 @@
-// src/components/Contact.js
-import React, { useState } from 'react';
-import { motion } from 'framer-motion';
+import React, { useState, useRef } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { FiUser, FiMail, FiMessageSquare, FiSend } from 'react-icons/fi';
 
 function Contact() {
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState('');
+  const formRef = useRef(null);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -17,104 +18,142 @@ function Contact() {
     e.preventDefault();
     setIsSubmitting(true);
 
+    const formDataToSend = new FormData(formRef.current);
+    formDataToSend.append('access_key', process.env.REACT_APP_WEB3FORMS_ACCESS_KEY);
+    formDataToSend.append('to_email', 'shadmanshahin6@gmail.com');
+
     try {
-      const response = await fetch('http://localhost:5000/submit', {
+      const response = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData),
+        body: formDataToSend
       });
 
-      if (response.ok) {
+      const result = await response.json();
+      if (result.success) {
         setSuccess(true);
         setFormData({ name: '', email: '', message: '' });
+        setTimeout(() => setSuccess(false), 5000);
       } else {
         throw new Error('Failed to send message');
       }
     } catch (err) {
       setError('Failed to send message. Please try again.');
+      setTimeout(() => setError(''), 5000);
     } finally {
       setIsSubmitting(false);
     }
   };
 
   return (
-    <section id="contact" className="py-20 bg-gradient-to-r from-gray-500 to-gray-600">
+    <section id="contact" className="py-20 bg-gradient-to-br from-blue-600 via-purple-600 to-pink-500">
       <div className="container mx-auto px-4">
         <motion.h2
-          className="text-4xl font-extrabold mb-8 text-center text-white"
-          initial={{ opacity: 0, y: -20 }}
+          className="text-6xl font-extrabold mb-12 text-center text-white"
+          initial={{ opacity: 0, y: -50 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 1, ease: "easeOut" }}
         >
-          Contact Me
+          Let's Connect
         </motion.h2>
-        <div className="max-w-lg mx-auto bg-white p-8 rounded-lg shadow-lg">
-          {success && (
-            <motion.div
-              className="text-green-500 mb-4 text-center"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.5 }}
-            >
-              Message sent successfully!
-            </motion.div>
-          )}
-          {error && (
-            <motion.div
-              className="text-red-500 mb-4 text-center"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.5 }}
-            >
-              {error}
-            </motion.div>
-          )}
-          <form onSubmit={handleSubmit}>
-            <div className="mb-4">
-              <label htmlFor="name" className="block text-gray-700 font-bold mb-2">Name</label>
-              <input
+        <motion.div 
+          className="max-w-xl mx-auto bg-white p-10 rounded-3xl shadow-2xl"
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.8 }}
+        >
+          <AnimatePresence>
+            {success && (
+              <motion.div
+                className="bg-green-100 border-l-4 border-green-500 text-green-700 p-4 mb-6 rounded-lg"
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{ duration: 0.5 }}
+              >
+                Message sent successfully! We'll get back to you soon.
+              </motion.div>
+            )}
+            {error && (
+              <motion.div
+                className="bg-red-100 border-l-4 border-red-500 text-red-700 p-4 mb-6 rounded-lg"
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{ duration: 0.5 }}
+              >
+                {error}
+              </motion.div>
+            )}
+          </AnimatePresence>
+          <form onSubmit={handleSubmit} ref={formRef}>
+            <input type="hidden" name="access_key" value={process.env.REACT_APP_WEB3FORMS_ACCESS_KEY} />
+            <input type="hidden" name="to_email" value="shadmanshahin6@gmail.com" />
+            <div className="mb-6">
+              <label htmlFor="name" className="block text-gray-700 font-bold mb-2 flex items-center">
+                <FiUser className="mr-2" /> Name
+              </label>
+              <motion.input
+                whileFocus={{ scale: 1.02 }}
                 type="text"
                 id="name"
                 name="name"
                 value={formData.name}
                 onChange={handleChange}
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 transition-transform duration-300"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-300"
                 required
               />
             </div>
-            <div className="mb-4">
-              <label htmlFor="email" className="block text-gray-700 font-bold mb-2">Email</label>
-              <input
+            <div className="mb-6">
+              <label htmlFor="email" className="block text-gray-700 font-bold mb-2 flex items-center">
+                <FiMail className="mr-2" /> Email
+              </label>
+              <motion.input
+                whileFocus={{ scale: 1.02 }}
                 type="email"
                 id="email"
                 name="email"
                 value={formData.email}
                 onChange={handleChange}
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 transition-transform duration-300"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-300"
                 required
               />
             </div>
-            <div className="mb-4">
-              <label htmlFor="message" className="block text-gray-700 font-bold mb-2">Message</label>
-              <textarea
+            <div className="mb-6">
+              <label htmlFor="message" className="block text-gray-700 font-bold mb-2 flex items-center">
+                <FiMessageSquare className="mr-2" /> Message
+              </label>
+              <motion.textarea
+                whileFocus={{ scale: 1.02 }}
                 id="message"
                 name="message"
                 rows="4"
                 value={formData.message}
                 onChange={handleChange}
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 transition-transform duration-300"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-300"
                 required
-              ></textarea>
+              ></motion.textarea>
             </div>
-            <button
+            <motion.button
               type="submit"
-              className="w-full bg-blue-500 text-white px-4 py-2 rounded-lg shadow-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400 transition-transform duration-300"
+              className="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-4 rounded-lg shadow-lg font-bold text-lg hover:from-blue-700 hover:to-purple-700 focus:outline-none focus:ring-2 focus:ring-blue-400 transition-all duration-300 flex items-center justify-center"
               disabled={isSubmitting}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
             >
-              {isSubmitting ? 'Sending...' : 'Send Message'}
-            </button>
+              {isSubmitting ? (
+                <motion.div
+                  className="w-6 h-6 border-t-2 border-white rounded-full animate-spin"
+                  animate={{ rotate: 360 }}
+                  transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
+                />
+              ) : (
+                <>
+                  <FiSend className="mr-2" /> Send Message
+                </>
+              )}
+            </motion.button>
           </form>
-        </div>
+        </motion.div>
       </div>
     </section>
   );
