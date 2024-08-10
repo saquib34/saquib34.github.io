@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion, useAnimation } from 'framer-motion';
 import { FaLinkedin, FaGithub, FaEnvelope } from 'react-icons/fa';
 
+// TypewriterText Component
 const TypewriterText = ({ text, speed = 150 }) => {
   const [displayedText, setDisplayedText] = useState('');
 
@@ -22,6 +23,7 @@ const TypewriterText = ({ text, speed = 150 }) => {
   return <span>{displayedText}</span>;
 };
 
+// Hero Component
 function Hero() {
   const controls = useAnimation();
   const [hoverSkill, setHoverSkill] = useState(null);
@@ -87,13 +89,13 @@ function Hero() {
             Mohammad Saquib Daiyan
           </h1>
           <p className="text-3xl md:text-4xl mb-12 text-pink-100">
-            <TypewriterText text="AI | ML Enthusiast | Web Developer | Cloud Computing Expert" />
+            <TypewriterText text="AI ML Enthusiast | Web Developer | Cloud Computing Expert" />
           </p>
-          <div className="flex justify-center space-x-8 mb-16">
+          <div className="relative flex justify-center space-x-8 mb-16">
             {skills.map((skill, index) => (
               <motion.div
                 key={skill.name}
-                className={`text-2xl font-semibold px-6 py-3 rounded-full bg-gradient-to-r ${skill.color} cursor-pointer`}
+                className={`relative text-2xl font-semibold px-6 py-3 rounded-full bg-gradient-to-r ${skill.color} cursor-pointer`}
                 custom={index}
                 animate={controls}
                 whileHover={{ scale: 1.1, y: -5 }}
@@ -123,7 +125,7 @@ function Hero() {
               <FaLinkedin />
             </motion.a>
             <motion.a
-              href="hhttps://github.com/saquib34"
+              href="https://github.com/saquib34"
               className="text-4xl text-white hover:text-pink-200 transition-colors duration-300"
               whileHover={{ scale: 1.2, rotate: 360 }}
               whileTap={{ scale: 0.9 }}
