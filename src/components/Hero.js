@@ -39,7 +39,7 @@ function Hero() {
   }, [controls]);
 
   const skills = [
-    { name: 'AI/ML', color: 'from-blue-400 to-blue-600' },
+    { name: 'AI & ML', color: 'from-blue-400 to-blue-600' },
     { name: 'Web Dev', color: 'from-green-400 to-green-600' },
     { name: 'Cloud', color: 'from-yellow-400 to-yellow-600' }
   ];
@@ -123,7 +123,7 @@ function Hero() {
               <FaLinkedin />
             </motion.a>
             <motion.a
-              href="https://www.linkedin.com/in/saquib34"
+              href="hhttps://github.com/saquib34"
               className="text-4xl text-white hover:text-pink-200 transition-colors duration-300"
               whileHover={{ scale: 1.2, rotate: 360 }}
               whileTap={{ scale: 0.9 }}
@@ -131,7 +131,7 @@ function Hero() {
               <FaGithub />
             </motion.a>
             <motion.a
-              href="shadmanshahin6@gmail.com" 
+              href="mailto:shadmanshahin6@gmail.com" 
               className="text-4xl text-white hover:text-pink-200 transition-colors duration-300"
               whileHover={{ scale: 1.2, rotate: 360 }}
               whileTap={{ scale: 0.9 }}
