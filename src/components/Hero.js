@@ -89,7 +89,7 @@ function Hero() {
             Mohammad Saquib Daiyan
           </h1>
           <p className="text-3xl md:text-4xl mb-12 text-pink-100">
-            <TypewriterText text="ML Enthusiast | Web Developer | Cloud Computing Expert" />
+            <TypewriterText text="Machine Learning | Web Developer | Cloud Computing Expert" />
           </p>
           <div className="relative flex justify-center space-x-8 mb-16">
             {skills.map((skill, index) => (
