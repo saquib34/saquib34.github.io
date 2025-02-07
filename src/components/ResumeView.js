@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 
 const ResumeView = () => {
   useEffect(() => {
-    window.location.href = 'https://saquib.in/SRMISTRMP_MOHAMMAD_SAQUIB_DAIYAN.pdf';
+    window.location.href = '/SRMISTRMP_Mohammad_Saquib_Daiyan.pdf';
   }, []);
 
   return (
