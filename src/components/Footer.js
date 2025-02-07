@@ -1,5 +1,4 @@
 import React from 'react';
-import Resume from '../Document/SRMISTRMP_Mohammad_Saquib_Daiyan.pdf';
 
 const Footer = () => {
   const socialLinks = [
@@ -15,7 +14,7 @@ const Footer = () => {
     },
     {
       name: 'Resume',
-      url: Resume,  // Using the imported Resume file
+      url: '/Resume',  // Using the imported Resume file
       ariaLabel: 'View Resume'
     }
   ];
