@@ -6,6 +6,19 @@ import { FaBriefcase, FaMapMarkerAlt, FaCalendarAlt } from 'react-icons/fa';
 function Experience() {
   const experiences = [
     {
+      title: "AI Intern",
+      company: "ZensiBle",
+      duration: "November 2024 - Feb 2025",
+      location: "Kanpur",
+      description: [
+        "Developing a healthcare AI system for mental health professionals in India",
+        "Building voice transcription system using OpenAI’s Whisper for therapy session analysis",
+        "Implementing custom diarization for therapist-patient conversation differentiation",
+        "Creating SOAP notes generation system optimized for Indian languages and accents",
+        "Architecting specialized ML models for mental health assessment tailored for Indian context"
+      ]
+    },
+    {
       title: "Research Intern",
       company: "IISER Bhopal",
       duration: "May 2024 - July 2024",
@@ -37,7 +50,8 @@ function Experience() {
         "Applied deep learning algorithms for medical diagnosis.",
         "Collaborated with domain experts on medical image analysis challenges."
       ]
-    }
+    },
+   
   ];
 
   const containerVariants = {
