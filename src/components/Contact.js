@@ -1,6 +1,7 @@
 import React, { useState, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FiUser, FiMail, FiMessageSquare, FiSend } from 'react-icons/fi';
+import { FaGithub, FaLinkedin, FaGlobe, FaFilePdf } from 'react-icons/fa';
 
 
 const apiKey = process.env.REACT_APP_WEB3FORMS_API_KEY;
@@ -55,6 +56,69 @@ function Contact() {
         >
           Let's Connect
         </motion.h2>
+        {/* Animated Social Icons */}
+        <motion.div
+          className="flex justify-center gap-8 mb-8"
+          initial="hidden"
+          animate="visible"
+          variants={{
+            hidden: { opacity: 0, y: 30 },
+            visible: { opacity: 1, y: 0, transition: { staggerChildren: 0.2 } }
+          }}
+        >
+          <motion.a
+            href="https://github.com/saquib34"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="GitHub"
+            whileHover={{ scale: 1.2, rotate: 10 }}
+            className="text-white text-3xl hover:text-gray-300"
+          >
+            <FaGithub />
+          </motion.a>
+          <motion.a
+            href="https://linkedin.com/in/saquib34"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="LinkedIn"
+            whileHover={{ scale: 1.2, rotate: -10 }}
+            className="text-white text-3xl hover:text-gray-300"
+          >
+            <FaLinkedin />
+          </motion.a>
+          <motion.a
+            href="https://saquib.in"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Portfolio"
+            whileHover={{ scale: 1.2, rotate: 8 }}
+            className="text-white text-3xl hover:text-gray-300"
+          >
+            <FaGlobe />
+          </motion.a>
+        </motion.div>
+        {/* Download Buttons for CV and Resume */}
+        <motion.div
+          className="flex justify-center gap-6 mb-10"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.5, duration: 0.8 }}
+        >
+          <a
+            href="/CV.pdf"
+            download
+            className="flex items-center bg-white text-blue-700 font-bold px-6 py-3 rounded-lg shadow-lg hover:bg-blue-100 transition-all duration-300"
+          >
+            <FaFilePdf className="mr-2 text-red-500 text-2xl" /> Download CV
+          </a>
+          <a
+            href="/SRMISTRMP_Mohammad_Saquib_Daiyan.pdf"
+            download
+            className="flex items-center bg-white text-purple-700 font-bold px-6 py-3 rounded-lg shadow-lg hover:bg-purple-100 transition-all duration-300"
+          >
+            <FaFilePdf className="mr-2 text-purple-500 text-2xl" /> Download Resume
+          </a>
+        </motion.div>
         <motion.div
           className="max-w-xl mx-auto bg-white p-10 rounded-3xl shadow-2xl"
           initial={{ opacity: 0, scale: 0.8 }}
