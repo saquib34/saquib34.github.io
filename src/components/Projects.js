@@ -5,7 +5,7 @@ import { FaArrowRight, FaTimes, FaBrain, FaTshirt, FaMouse, FaMobileAlt, FaComme
 
 function Projects() {
   const [selectedProject, setSelectedProject] = useState(null);
-  const [hoveredIndex, setHoveredIndex] = useState(null);
+  const [, setHoveredIndex] = useState(null);
   const [showExtra, setShowExtra] = useState(false);
 
   // Major projects from CV/resume (main grid, always visible)
