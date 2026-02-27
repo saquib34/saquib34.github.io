@@ -9,21 +9,8 @@
   <meta name="description"
     content="Portfolio of Mohammad Saquib Daiyan, a Software Development Engineer specializing in Machine Learning, browser-based virtualization (V86), and healthcare AI. Technical Lead at TechVayuna and ML Instructor." />
   <link rel="apple-touch-icon" href="%PUBLIC_URL%/saquib.ico" />
-  <!--
-      manifest.json provides metadata used when your web app is installed on a
-      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
-    -->
   <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-  <!--
-      Notice the use of %PUBLIC_URL% in the tags above.
-      It will be replaced with the URL of the `public` folder during the build.
-      Only files inside the `public` folder can be referenced from the HTML.
-
-      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
-      work correctly both with client-side routing and a non-root public URL.
-      Learn how to configure a non-root public URL by running `npm run build`.
-    -->
-  <title>Mohammad Saquib Daiyan | SDE @ Aptli AI | ML & Virtualization Engineer</title>
+  <title>Mohammad Saquib Daiyan | SDE @ Aptli AI | ML &amp; Virtualization Engineer</title>
   <meta name="keywords"
     content="Mohammad Saquib Daiyan, Saquib Daiyan, SDE, Aptli AI, Kalvium, V86 virtualization, ML Engineer, React Developer, IIT Kanpur Intern, IISER Bhopal, TechVayuna, Patna, Chennai, Software Engineer" />
   <link rel="canonical" href="https://saquib.in/" />
@@ -102,86 +89,404 @@
   </script>
 </head>
 
-<body>
-  <noscript>You need to enable JavaScript to run this app.</noscript>
-  <div id="root">
-    <!-- Semantic Fallback for SEO and No-JS Users -->
-    <header>
-      <h1>Mohammad Saquib Daiyan</h1>
-      <p>Software Development Engineer @ Aptli AI | ML & Virtualization Specialist</p>
-      <nav>
-        <ul>
-          <li><a href="#about">About</a></li>
-          <li><a href="#skills">Skills</a></li>
-          <li><a href="#experience">Experience</a></li>
-          <li><a href="#projects">Projects</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-      </nav>
-    </header>
+<body
+  style="margin:0;padding:0;background:#0a0a0a;color:#d1d5db;font-family:'Inter','Segoe UI',system-ui,-apple-system,sans-serif;line-height:1.7;">
 
-    <main>
-      <section id="about">
-        <h2>About Me</h2>
-        <p>Expert in Machine Learning, browser-based virtualization, and building scalable intelligent systems.
-          Currently driving AI innovation at Aptli AI.</p>
-      </section>
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <!-- NOSCRIPT: Full styled page for users with JS disabled  -->
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <noscript>
+    <style>
+      .njs {
+        max-width: 820px;
+        margin: 0 auto;
+        padding: 20px 24px
+      }
 
-      <section id="skills">
-        <h2>Technical Expertise</h2>
-        <ul>
-          <li><strong>AI & Research:</strong> Machine Learning, Deep Learning, Computer Vision, NLP</li>
-          <li><strong>Web Dev:</strong> React.js, Next.js, Node.js, Three.js</li>
-          <li><strong>Cloud & DevOps:</strong> AWS, Docker, Kubernetes, CI/CD</li>
-          <li><strong>Languages:</strong> Python, JavaScript, Java, C++, SQL</li>
-        </ul>
-      </section>
+      .njs-hero {
+        text-align: center;
+        padding: 80px 0 48px;
+        border-bottom: 1px solid #262626
+      }
 
-      <section id="experience">
-        <h2>Career Journey</h2>
-        <ul>
-          <li><strong>SDE @ Aptli AI</strong> (Feb 2026 - Present)</li>
-          <li><strong>SDE @ Kalvium</strong> (May 2025 - Feb 2026) - Virtualization & V86</li>
-          <li><strong>ML & Backend @ Zensible</strong> - Healthcare AI</li>
-          <li><strong>Research Intern @ IISER Bhopal & IIT Kanpur</strong></li>
-        </ul>
-      </section>
+      .njs-hero h1 {
+        font-size: 2.6rem;
+        color: #fff;
+        margin: 0 0 8px;
+        font-weight: 900;
+        letter-spacing: -1.5px
+      }
 
-      <section id="projects">
-        <h2>Featured Projects</h2>
-        <article>
+      .njs-hero .role {
+        color: #FCD34D;
+        font-size: 1.1rem;
+        font-weight: 600;
+        margin: 0 0 20px
+      }
+
+      .njs-hero .bio {
+        color: #9ca3af;
+        font-size: 1rem;
+        max-width: 600px;
+        margin: 0 auto 28px
+      }
+
+      .njs-nav {
+        display: flex;
+        gap: 12px;
+        justify-content: center;
+        flex-wrap: wrap
+      }
+
+      .njs-nav a {
+        color: #9ca3af;
+        text-decoration: none;
+        font-size: .8rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        padding: 8px 16px;
+        border: 1px solid #262626;
+        border-radius: 8px;
+        transition: all .2s
+      }
+
+      .njs-nav a:hover {
+        color: #FCD34D;
+        border-color: #FCD34D
+      }
+
+      .njs-s {
+        padding: 44px 0;
+        border-bottom: 1px solid #1a1a1a
+      }
+
+      .njs-s h2 {
+        color: #fff;
+        font-size: 1.4rem;
+        font-weight: 900;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        margin: 0 0 20px
+      }
+
+      .njs-s h2 span {
+        color: #FCD34D
+      }
+
+      .njs-s p {
+        margin: 0 0 12px;
+        color: #9ca3af;
+        font-size: .95rem
+      }
+
+      .njs-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px
+      }
+
+      .njs-tag {
+        background: #1a1a1a;
+        border: 1px solid #262626;
+        color: #d1d5db;
+        padding: 6px 14px;
+        border-radius: 8px;
+        font-size: .78rem;
+        font-weight: 700
+      }
+
+      .njs-c {
+        background: #111;
+        border: 1px solid #262626;
+        border-radius: 14px;
+        padding: 22px;
+        margin-bottom: 14px
+      }
+
+      .njs-c h3 {
+        color: #fff;
+        font-size: 1.05rem;
+        font-weight: 800;
+        margin: 0 0 6px
+      }
+
+      .njs-c p {
+        color: #9ca3af;
+        font-size: .88rem;
+        margin: 0
+      }
+
+      .njs-ei {
+        margin-bottom: 18px;
+        padding-left: 20px;
+        border-left: 2px solid #262626
+      }
+
+      .njs-ei strong {
+        color: #fff;
+        display: block;
+        font-size: .95rem
+      }
+
+      .njs-ei em {
+        color: #FCD34D;
+        font-size: .8rem;
+        font-style: normal;
+        font-weight: 600
+      }
+
+      .njs-ei span {
+        color: #6b7280;
+        font-size: .85rem;
+        display: block;
+        margin-top: 2px
+      }
+
+      .njs-btns {
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+        margin-top: 20px
+      }
+
+      .njs-btns a {
+        display: inline-block;
+        background: #FCD34D;
+        color: #0a0a0a;
+        padding: 12px 28px;
+        border-radius: 10px;
+        text-decoration: none;
+        font-weight: 700;
+        font-size: .9rem
+      }
+
+      .njs-btns a.ol {
+        background: transparent;
+        border: 1px solid #333;
+        color: #d1d5db
+      }
+
+      .njs-ft {
+        text-align: center;
+        padding: 32px 0;
+        color: #4b5563;
+        font-size: .82rem
+      }
+    </style>
+    <div class="njs">
+      <div class="njs-hero">
+        <h1>Mohammad Saquib Daiyan</h1>
+        <p class="role">Software Development Engineer @ Aptli AI</p>
+        <p class="bio">Engineering Intelligent Systems for the Modern Web. Specialist in Machine Learning, browser-based
+          virtualization, and healthcare AI.</p>
+        <div class="njs-nav">
+          <a href="#njs-about">About</a>
+          <a href="#njs-skills">Skills</a>
+          <a href="#njs-exp">Experience</a>
+          <a href="#njs-proj">Projects</a>
+          <a href="#njs-contact">Contact</a>
+        </div>
+      </div>
+
+      <div class="njs-s" id="njs-about">
+        <h2>About <span>Me</span></h2>
+        <p>I'm a Software Development Engineer at Aptli AI with deep expertise in Machine Learning, browser-based
+          virtualization (V86/WebAssembly), and building scalable cloud-native systems. Previously at Kalvium, Zensible,
+          and research labs at IISER Bhopal and IIT Kanpur. Alumni of SRMIST, Chennai.</p>
+        <p>My work spans from architecting AI-powered healthcare platforms to running full operating systems inside
+          browser tabs. I'm passionate about pushing the boundaries of what's possible on the web.</p>
+      </div>
+
+      <div class="njs-s" id="njs-skills">
+        <h2>Technical <span>Expertise</span></h2>
+        <div class="njs-tags">
+          <span class="njs-tag">Machine Learning</span>
+          <span class="njs-tag">Deep Learning</span>
+          <span class="njs-tag">Computer Vision</span>
+          <span class="njs-tag">NLP</span>
+          <span class="njs-tag">React.js</span>
+          <span class="njs-tag">Next.js</span>
+          <span class="njs-tag">Node.js</span>
+          <span class="njs-tag">Python</span>
+          <span class="njs-tag">AWS</span>
+          <span class="njs-tag">Docker</span>
+          <span class="njs-tag">Kubernetes</span>
+          <span class="njs-tag">WebAssembly</span>
+          <span class="njs-tag">Three.js</span>
+          <span class="njs-tag">TensorFlow</span>
+          <span class="njs-tag">PyTorch</span>
+          <span class="njs-tag">PostgreSQL</span>
+          <span class="njs-tag">MongoDB</span>
+          <span class="njs-tag">CI/CD</span>
+        </div>
+      </div>
+
+      <div class="njs-s" id="njs-exp">
+        <h2>Career <span>Journey</span></h2>
+        <div class="njs-ei"><strong>ML &amp; Web Dev Engineer @ Aptli AI</strong><em>Feb 2026 -
+            Present</em><span>Architecting ML-driven features and high-performance web applications.</span></div>
+        <div class="njs-ei"><strong>SDE @ Kalvium</strong><em>May 2025 - Feb 2026</em><span>V86 virtualization — running
+            Linux in browsers with JS &amp; WebAssembly.</span></div>
+        <div class="njs-ei"><strong>ML &amp; Backend Engineer @ Zensible</strong><em>Nov 2024 - Feb
+            2025</em><span>Healthcare AI: voice transcription, diarization, SOAP notes for therapists.</span></div>
+        <div class="njs-ei"><strong>Mobile App Dev Intern @ Dhobi G</strong><em>Sep 2024 - Nov 2024</em><span>Flutter
+            &amp; Firebase mobile application development.</span></div>
+        <div class="njs-ei"><strong>Research Intern @ IISER Bhopal</strong><em>May 2024 - Jul 2024</em><span>Emotion
+            detection using multimodal signals (GSR, CNN, LSTM).</span></div>
+        <div class="njs-ei"><strong>Frontend Intern @ Ministry of Education</strong><em>Jun 2024 - Jul
+            2024</em><span>Built responsive interfaces for government education platforms.</span></div>
+        <div class="njs-ei"><strong>CNN Architecture Intern @ IIT Kanpur</strong><em>Jun 2023 - Jul 2023</em><span>CNN
+            architectures for retinal image classification.</span></div>
+      </div>
+
+      <div class="njs-s" id="njs-proj">
+        <h2>Featured <span>Projects</span></h2>
+        <div class="njs-c">
           <h3>AI-Powered Smart Hospital System</h3>
-          <p>A comprehensive management platform with ML-driven patient load prediction and automated diagnostics.</p>
-        </article>
-        <article>
-          <h3>Voice & Text Emotion Detection</h3>
-          <p>Real-time multimodal emotion analysis using deep learning for mental health applications.</p>
-        </article>
-        <article>
+          <p>Comprehensive management platform with ML-driven patient load prediction, automated diagnostics, and
+            real-time monitoring. Built with React, Python, and FastAPI.</p>
+        </div>
+        <div class="njs-c">
+          <h3>Voice &amp; Text Emotion Detection</h3>
+          <p>Real-time multimodal emotion analysis using deep learning for mental health applications with
+            therapist-patient differentiation.</p>
+        </div>
+        <div class="njs-c">
           <h3>WebLLM Inference</h3>
-          <p>Browser-native LLM execution leveraging WebGPU and WASM for private AI interactions.</p>
-        </article>
-      </section>
+          <p>Browser-native LLM execution leveraging WebGPU and WASM for private, zero-server AI interactions.</p>
+        </div>
+        <div class="njs-c">
+          <h3>TamilLLM</h3>
+          <p>Building a Large Language Model for Tamil from scratch — low-resource language AI research.</p>
+        </div>
+        <div class="njs-c">
+          <h3>Deepfake Detection (IEEE Published)</h3>
+          <p>A novel automated model to detect real-time deepfakes using computer vision. Published in IEEE 2024.</p>
+        </div>
+        <div class="njs-c">
+          <h3>NeuroKit-Eda-Analysis</h3>
+          <p>Open-source electrodermal activity analysis library for physiological signal processing. Published on PyPI.
+          </p>
+        </div>
+        <div class="njs-c">
+          <h3>AI Guard</h3>
+          <p>Intelligent video surveillance with real-time anomaly detection via deep learning.</p>
+        </div>
+        <div class="njs-c">
+          <h3>Automated Hydroponic Farm</h3>
+          <p>IoT-powered system for automated nutrient delivery and environmental optimization.</p>
+        </div>
+      </div>
 
-      <section id="contact">
-        <h2>Get In Touch</h2>
-        <p>Email: shadmanshahin6@gmail.com</p>
-        <p>Location: Remote / Bengaluru, India</p>
-        <p><a href="https://linkedin.com/in/saquib34">LinkedIn</a> | <a href="https://github.com/saquib34">GitHub</a>
-        </p>
-      </section>
-    </main>
+      <div class="njs-s" id="njs-contact">
+        <h2>Get In <span>Touch</span></h2>
+        <p>I'm always open to discussing new opportunities, research collaborations, or interesting projects.</p>
+        <p><strong style="color:#fff;">Email:</strong> shadmanshahin6@gmail.com</p>
+        <p><strong style="color:#fff;">Location:</strong> Remote / India</p>
+        <div class="njs-btns">
+          <a href="mailto:shadmanshahin6@gmail.com">Email Me</a>
+          <a href="https://linkedin.com/in/saquib34" class="ol">LinkedIn</a>
+          <a href="https://github.com/saquib34" class="ol">GitHub</a>
+          <a href="/CV.pdf" class="ol">Download Resume</a>
+        </div>
+      </div>
+
+      <div class="njs-ft">
+        <p>This is a lightweight version of the portfolio. Enable JavaScript for the full interactive experience with
+          animations and 3D effects.</p>
+        <p>&copy; 2026 Mohammad Saquib Daiyan. All rights reserved.</p>
+      </div>
+    </div>
+  </noscript>
+
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <!-- ROOT: Inline-styled fallback for crawlers              -->
+  <!-- React replaces this content when JS loads              -->
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <div id="root">
+    <div style="max-width:820px;margin:0 auto;padding:60px 24px;font-family:system-ui,sans-serif;color:#d1d5db;">
+      <header>
+        <h1 style="color:#fff;font-size:2.2rem;margin:0 0 4px;font-weight:900;">Mohammad Saquib Daiyan</h1>
+        <p style="color:#FCD34D;font-size:1rem;margin:0 0 16px;font-weight:600;">Software Development Engineer @ Aptli
+          AI | ML &amp; Virtualization Specialist</p>
+        <nav style="display:flex;gap:12px;flex-wrap:wrap;">
+          <a href="#about"
+            style="color:#9ca3af;text-decoration:none;font-size:.8rem;text-transform:uppercase;letter-spacing:1px;">About</a>
+          <a href="#skills"
+            style="color:#9ca3af;text-decoration:none;font-size:.8rem;text-transform:uppercase;letter-spacing:1px;">Skills</a>
+          <a href="#experience"
+            style="color:#9ca3af;text-decoration:none;font-size:.8rem;text-transform:uppercase;letter-spacing:1px;">Experience</a>
+          <a href="#projects"
+            style="color:#9ca3af;text-decoration:none;font-size:.8rem;text-transform:uppercase;letter-spacing:1px;">Projects</a>
+          <a href="#contact"
+            style="color:#9ca3af;text-decoration:none;font-size:.8rem;text-transform:uppercase;letter-spacing:1px;">Contact</a>
+        </nav>
+      </header>
+      <main>
+        <section id="about" style="padding:32px 0;border-bottom:1px solid #1a1a1a;">
+          <h2 style="color:#fff;font-size:1.3rem;font-weight:800;text-transform:uppercase;letter-spacing:2px;">About Me
+          </h2>
+          <p>Expert in Machine Learning, browser-based virtualization (V86/WebAssembly), and building scalable
+            cloud-native intelligent systems. Currently driving AI innovation at Aptli AI. Previously at Kalvium,
+            Zensible, IISER Bhopal and IIT Kanpur. Alumni of SRMIST, Chennai.</p>
+        </section>
+        <section id="skills" style="padding:32px 0;border-bottom:1px solid #1a1a1a;">
+          <h2 style="color:#fff;font-size:1.3rem;font-weight:800;text-transform:uppercase;letter-spacing:2px;">Technical
+            Expertise</h2>
+          <p>Machine Learning, Deep Learning, Computer Vision, NLP, React.js, Next.js, Node.js, Python, AWS, Docker,
+            Kubernetes, WebAssembly, TensorFlow, PyTorch, PostgreSQL, MongoDB, CI/CD, Three.js</p>
+        </section>
+        <section id="experience" style="padding:32px 0;border-bottom:1px solid #1a1a1a;">
+          <h2 style="color:#fff;font-size:1.3rem;font-weight:800;text-transform:uppercase;letter-spacing:2px;">Career
+            Journey</h2>
+          <ul style="list-style:none;padding:0;">
+            <li style="margin-bottom:12px;"><strong style="color:#fff;">ML &amp; Web Dev Engineer @ Aptli AI</strong>
+              <em style="color:#FCD34D;font-size:.85rem;">(Feb 2026 - Present)</em></li>
+            <li style="margin-bottom:12px;"><strong style="color:#fff;">SDE @ Kalvium</strong> <em
+                style="color:#FCD34D;font-size:.85rem;">(May 2025 - Feb 2026)</em> - V86 Virtualization</li>
+            <li style="margin-bottom:12px;"><strong style="color:#fff;">ML &amp; Backend @ Zensible</strong> <em
+                style="color:#FCD34D;font-size:.85rem;">(Nov 2024 - Feb 2025)</em> - Healthcare AI</li>
+            <li style="margin-bottom:12px;"><strong style="color:#fff;">Research Intern @ IISER Bhopal</strong> <em
+                style="color:#FCD34D;font-size:.85rem;">(2024)</em></li>
+            <li style="margin-bottom:12px;"><strong style="color:#fff;">Frontend Intern @ Ministry of Education</strong>
+              <em style="color:#FCD34D;font-size:.85rem;">(2024)</em></li>
+            <li style="margin-bottom:12px;"><strong style="color:#fff;">CNN Intern @ IIT Kanpur</strong> <em
+                style="color:#FCD34D;font-size:.85rem;">(2023)</em></li>
+          </ul>
+        </section>
+        <section id="projects" style="padding:32px 0;border-bottom:1px solid #1a1a1a;">
+          <h2 style="color:#fff;font-size:1.3rem;font-weight:800;text-transform:uppercase;letter-spacing:2px;">Featured
+            Projects</h2>
+          <article style="background:#111;border:1px solid #262626;border-radius:12px;padding:20px;margin-bottom:12px;">
+            <h3 style="color:#fff;font-size:1rem;margin:0 0 6px;">AI-Powered Smart Hospital System</h3>
+            <p style="margin:0;font-size:.9rem;">ML-driven patient load prediction and automated diagnostics platform.
+            </p>
+          </article>
+          <article style="background:#111;border:1px solid #262626;border-radius:12px;padding:20px;margin-bottom:12px;">
+            <h3 style="color:#fff;font-size:1rem;margin:0 0 6px;">Voice &amp; Text Emotion Detection</h3>
+            <p style="margin:0;font-size:.9rem;">Multimodal emotion analysis using deep learning for mental health.</p>
+          </article>
+          <article style="background:#111;border:1px solid #262626;border-radius:12px;padding:20px;margin-bottom:12px;">
+            <h3 style="color:#fff;font-size:1rem;margin:0 0 6px;">WebLLM Inference</h3>
+            <p style="margin:0;font-size:.9rem;">Browser-native LLM execution via WebGPU and WASM.</p>
+          </article>
+          <article style="background:#111;border:1px solid #262626;border-radius:12px;padding:20px;margin-bottom:12px;">
+            <h3 style="color:#fff;font-size:1rem;margin:0 0 6px;">Deepfake Detection (IEEE Published)</h3>
+            <p style="margin:0;font-size:.9rem;">Novel automated deepfake detection using computer vision.</p>
+          </article>
+        </section>
+        <section id="contact" style="padding:32px 0;">
+          <h2 style="color:#fff;font-size:1.3rem;font-weight:800;text-transform:uppercase;letter-spacing:2px;">Contact
+          </h2>
+          <p><strong style="color:#fff;">Email:</strong> shadmanshahin6@gmail.com</p>
+          <p><a href="https://linkedin.com/in/saquib34" style="color:#FCD34D;">LinkedIn</a> · <a
+              href="https://github.com/saquib34" style="color:#FCD34D;">GitHub</a> · <a href="/CV.pdf"
+              style="color:#FCD34D;">Download Resume</a></p>
+        </section>
+      </main>
+    </div>
   </div>
-  <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
-
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
-
-      To begin the development, run `npm start` or `yarn start`.
-      To create a production bundle, use `npm run build` or `yarn build`.
-    -->
 </body>
 
 </html>
