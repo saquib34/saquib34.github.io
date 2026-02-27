@@ -1,14 +1,13 @@
 import React, { useState, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FiUser, FiMail, FiMessageSquare, FiSend } from 'react-icons/fi';
-import { FaGithub, FaLinkedin, FaGlobe, FaFilePdf } from 'react-icons/fa';
-
+import { FaGithub, FaLinkedin, FaFilePdf } from 'react-icons/fa';
 
 const apiKey = process.env.REACT_APP_WEB3FORMS_API_KEY;
 
 function Contact() {
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
-  const [result, setResult] = useState(''); // Simplified result state
+  const [result, setResult] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const formRef = useRef(null);
 
@@ -23,7 +22,7 @@ function Contact() {
     setResult('Sending....');
 
     const formDataToSend = new FormData(e.target);
-    formDataToSend.append('access_key', apiKey); // Correctly append the API key as a string
+    formDataToSend.append('access_key', apiKey);
 
     try {
       const response = await fetch('https://api.web3forms.com/submit', {
@@ -46,168 +45,134 @@ function Contact() {
   };
 
   return (
-    <section id="contact" className="py-20 bg-gradient-to-br from-blue-600 via-purple-600 to-pink-500">
-      <div className="container mx-auto px-4">
-        <motion.h2
-          className="text-6xl font-extrabold mb-12 text-center text-white"
-          initial={{ opacity: 0, y: -50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, ease: "easeOut" }}
-        >
-          Let's Connect
-        </motion.h2>
-        {/* Animated Social Icons */}
+    <section id="contact" className="bg-dark relative overflow-hidden grid-background border-t border-border">
+      <div className="container relative z-10">
         <motion.div
-          className="flex justify-center gap-8 mb-8"
-          initial="hidden"
-          animate="visible"
-          variants={{
-            hidden: { opacity: 0, y: 30 },
-            visible: { opacity: 1, y: 0, transition: { staggerChildren: 0.2 } }
-          }}
-        >
-          <motion.a
-            href="https://github.com/saquib34"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="GitHub"
-            whileHover={{ scale: 1.2, rotate: 10 }}
-            className="text-white text-3xl hover:text-gray-300"
-          >
-            <FaGithub />
-          </motion.a>
-          <motion.a
-            href="https://linkedin.com/in/saquib34"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="LinkedIn"
-            whileHover={{ scale: 1.2, rotate: -10 }}
-            className="text-white text-3xl hover:text-gray-300"
-          >
-            <FaLinkedin />
-          </motion.a>
-          <motion.a
-            href="https://saquib.in"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Portfolio"
-            whileHover={{ scale: 1.2, rotate: 8 }}
-            className="text-white text-3xl hover:text-gray-300"
-          >
-            <FaGlobe />
-          </motion.a>
-        </motion.div>
-        {/* Download Buttons for CV and Resume */}
-        <motion.div
-          className="flex justify-center gap-6 mb-10"
           initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.5, duration: 0.8 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-center mb-20"
         >
-          <a
-            href="/CV.pdf"
-            download
-            className="flex items-center bg-white text-blue-700 font-bold px-6 py-3 rounded-lg shadow-lg hover:bg-blue-100 transition-all duration-300"
-          >
-            <FaFilePdf className="mr-2 text-red-500 text-2xl" /> Download CV
-          </a>
-          <a
-            href="/SRMISTRMP_Mohammad_Saquib_Daiyan.pdf"
-            download
-            className="flex items-center bg-white text-purple-700 font-bold px-6 py-3 rounded-lg shadow-lg hover:bg-purple-100 transition-all duration-300"
-          >
-            <FaFilePdf className="mr-2 text-purple-500 text-2xl" /> Download Resume
-          </a>
+          <h2 className="text-4xl md:text-6xl font-black mb-4 uppercase tracking-tighter">Get In <span className="text-primary">Touch</span></h2>
+          <p className="text-gray-500 max-w-xl mx-auto font-medium">Let's collaborate on your next big idea.</p>
         </motion.div>
-        <motion.div
-          className="max-w-xl mx-auto bg-white p-10 rounded-3xl shadow-2xl"
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8 }}
-        >
-          <AnimatePresence>
-            {result && (
-              <motion.div
-                className={`p-4 mb-6 rounded-lg ${
-                  result.includes('Failed') ? 'bg-red-100 border-l-4 border-red-500 text-red-700' : 'bg-green-100 border-l-4 border-green-500 text-green-700'
-                }`}
-                initial={{ opacity: 0, y: -20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -20 }}
-                transition={{ duration: 0.5 }}
-              >
-                {result}
-              </motion.div>
-            )}
-          </AnimatePresence>
-          <form onSubmit={handleSubmit} ref={formRef} className="space-y-6">
-            <input type="hidden" name="to_email" value="shadmanshahin6@gmail.com" />
-            <div className="mb-6">
-              <label htmlFor="name" className="block text-gray-700 font-bold mb-2 flex items-center">
-                <FiUser className="mr-2" /> Name
-              </label>
-              <motion.input
-                whileFocus={{ scale: 1.02 }}
-                type="text"
-                id="name"
-                name="name"
-                value={formData.name}
-                onChange={handleChange}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-300"
-                required
-              />
+
+        <div className="flex flex-col lg:flex-row gap-16 items-start">
+          <div className="w-full lg:w-1/3 space-y-8">
+            <div className="card p-8 bg-primary/5 border-primary/20">
+              <h3 className="text-xl font-black text-white uppercase tracking-widest mb-6">Connect</h3>
+              <div className="flex flex-col gap-4">
+                <a href="https://github.com/saquib34" target="_blank" rel="noopener noreferrer" aria-label="Saquib's GitHub" title="GitHub" className="flex items-center gap-4 text-gray-400 hover:text-white transition-colors group">
+                  <span className="p-3 rounded-lg bg-dark border border-border group-hover:border-primary group-hover:text-primary transition-all"><FaGithub aria-hidden="true" /></span>
+                  <span className="font-bold">saquib34</span>
+                </a>
+                <a href="https://linkedin.com/in/saquib34" target="_blank" rel="noopener noreferrer" aria-label="Saquib's LinkedIn" title="LinkedIn" className="flex items-center gap-4 text-gray-400 hover:text-white transition-colors group">
+                  <span className="p-3 rounded-lg bg-dark border border-border group-hover:border-primary group-hover:text-primary transition-all"><FaLinkedin aria-hidden="true" /></span>
+                  <span className="font-bold">saquib34</span>
+                </a>
+                <a href="mailto:shadmanshahin6@gmail.com" aria-label="Email Saquib" title="Email" className="flex items-center gap-4 text-gray-400 hover:text-white transition-colors group">
+                  <span className="p-3 rounded-lg bg-dark border border-border group-hover:border-primary group-hover:text-primary transition-all"><FiMail aria-hidden="true" /></span>
+                  <span className="font-bold text-xs truncate">shadmanshahin6@gmail.com</span>
+                </a>
+              </div>
             </div>
-            <div className="mb-6">
-              <label htmlFor="email" className="block text-gray-700 font-bold mb-2 flex items-center">
-                <FiMail className="mr-2" /> Email
-              </label>
-              <motion.input
-                whileFocus={{ scale: 1.02 }}
-                type="email"
-                id="email"
-                name="email"
-                value={formData.email}
-                onChange={handleChange}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-300"
-                required
-              />
+
+            <div className="grid grid-cols-2 gap-4">
+              <a href="/CV.pdf" download aria-label="Download Curriculum Vitae" title="Download CV" className="card p-4 text-center hover:border-primary transition-all group">
+                <FaFilePdf className="text-2xl text-red-500 mx-auto mb-2" aria-hidden="true" />
+                <span className="text-[10px] font-black uppercase tracking-widest text-gray-400 group-hover:text-white">CV</span>
+              </a>
+              <a href="/SRMISTRMP_Mohammad_Saquib_Daiyan.pdf" download aria-label="Download Resume" title="Download Resume" className="card p-4 text-center hover:border-primary transition-all group">
+                <FaFilePdf className="text-2xl text-primary mx-auto mb-2" aria-hidden="true" />
+                <span className="text-[10px] font-black uppercase tracking-widest text-gray-400 group-hover:text-white">Resume</span>
+              </a>
             </div>
-            <div className="mb-6">
-              <label htmlFor="message" className="block text-gray-700 font-bold mb-2 flex items-center">
-                <FiMessageSquare className="mr-2" /> Message
-              </label>
-              <motion.textarea
-                whileFocus={{ scale: 1.02 }}
-                id="message"
-                name="message"
-                rows="4"
-                value={formData.message}
-                onChange={handleChange}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-300"
-                required
-              ></motion.textarea>
+          </div>
+
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="w-full lg:w-2/3"
+          >
+            <div className="card p-10">
+              <AnimatePresence>
+                {result && (
+                  <motion.div
+                    initial={{ opacity: 0, y: -20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -20 }}
+                    className={`p-4 mb-8 rounded-xl font-bold text-sm ${result.includes('Failed') ? 'bg-red-500/10 text-red-500 border border-red-500/20' : 'bg-primary/10 text-primary border border-primary/20'
+                      }`}
+                  >
+                    {result}
+                  </motion.div>
+                )}
+              </AnimatePresence>
+
+              <form onSubmit={handleSubmit} ref={formRef} className="space-y-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div className="space-y-2">
+                    <label className="text-[10px] font-black uppercase tracking-widest text-gray-500 ml-1">Your Name</label>
+                    <div className="relative">
+                      <FiUser className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500" />
+                      <input
+                        type="text"
+                        name="name"
+                        value={formData.name}
+                        onChange={handleChange}
+                        placeholder="John Doe"
+                        className="w-full pl-12 pr-4 py-4 bg-dark/50 border border-border rounded-xl text-white font-bold focus:outline-none focus:border-primary transition-all placeholder:text-gray-700"
+                        required
+                      />
+                    </div>
+                  </div>
+                  <div className="space-y-2">
+                    <label className="text-[10px] font-black uppercase tracking-widest text-gray-500 ml-1">Your Email</label>
+                    <div className="relative">
+                      <FiMail className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500" />
+                      <input
+                        type="email"
+                        name="email"
+                        value={formData.email}
+                        onChange={handleChange}
+                        placeholder="john@example.com"
+                        className="w-full pl-12 pr-4 py-4 bg-dark/50 border border-border rounded-xl text-white font-bold focus:outline-none focus:border-primary transition-all placeholder:text-gray-700"
+                        required
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div className="space-y-2">
+                  <label className="text-[10px] font-black uppercase tracking-widest text-gray-500 ml-1">Message</label>
+                  <div className="relative">
+                    <FiMessageSquare className="absolute left-4 top-6 text-gray-500" />
+                    <textarea
+                      name="message"
+                      rows="5"
+                      value={formData.message}
+                      onChange={handleChange}
+                      placeholder="Type your message here..."
+                      className="w-full pl-12 pr-4 py-4 bg-dark/50 border border-border rounded-xl text-white font-bold focus:outline-none focus:border-primary transition-all placeholder:text-gray-700 resize-none"
+                      required
+                    ></textarea>
+                  </div>
+                </div>
+                <button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="w-full bg-primary hover:bg-white text-dark py-5 rounded-xl font-black uppercase tracking-widest flex items-center justify-center gap-3 transition-all active:scale-[0.98] disabled:opacity-50"
+                >
+                  {isSubmitting ? (
+                    <div className="w-5 h-5 border-2 border-dark border-t-transparent rounded-full animate-spin" />
+                  ) : (
+                    <>Send Message <FiSend /></>
+                  )}
+                </button>
+              </form>
             </div>
-            <motion.button
-              type="submit"
-              className="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-4 rounded-lg shadow-lg font-bold text-lg hover:from-blue-700 hover:to-purple-700 focus:outline-none focus:ring-2 focus:ring-blue-400 transition-all duration-300 flex items-center justify-center"
-              disabled={isSubmitting}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              {isSubmitting ? (
-                <motion.div
-                  className="w-6 h-6 border-t-2 border-white rounded-full animate-spin"
-                  animate={{ rotate: 360 }}
-                  transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
-                />
-              ) : (
-                <>
-                  <FiSend className="mr-2" /> Send Message
-                </>
-              )}
-            </motion.button>
-          </form>
-        </motion.div>
+          </motion.div>
+        </div>
       </div>
     </section>
   );

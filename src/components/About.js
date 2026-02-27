@@ -2,136 +2,152 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import saquib from '../images/saquib.png';
-import { FaGithub, FaLinkedin, FaEnvelope, FaMapMarkerAlt, FaUniversity, FaCalendarAlt } from 'react-icons/fa';
+import { FaGithub, FaLinkedin, FaEnvelope, FaMapMarkerAlt, FaUniversity } from 'react-icons/fa';
 
 const stats = [
-  { label: 'Years Experience', value: 3 },
-  { label: 'Major Projects', value: 10 },
-  { label: 'Students Mentored', value: 100 },
-  { label: 'Workshops Led', value: 12 },
+  { label: 'Major Projects', value: '15+' },
+  { label: 'Mentored', value: '100+' },
+  { label: 'Workshops', value: '12+' },
+  { label: 'Research', value: '2+' },
 ];
 
 const education = [
   { degree: 'B.Tech in Computer Science (IoT & AI/ML)', place: 'SRMIST, Chennai', year: '2022-2026', score: 'CGPA: 9.15' },
   { degree: 'Class XII (CBSE)', place: 'Patna', year: '2021', score: '85.6%' },
-  { degree: 'Class X (ICSE)', place: 'Patna', year: '2019', score: '84.8%' },
 ];
 
 function About() {
   return (
-    <section id="about" className="py-8 bg-gradient-to-br from-blue-50 to-purple-50 relative overflow-hidden">
-      {/* Soft background shape */}
-      <motion.div
-        className="absolute -top-24 -left-24 w-[400px] h-[400px] rounded-full bg-blue-100 opacity-30 z-0"
-        initial={{ scale: 0.8, opacity: 0 }}
-        animate={{ scale: 1, opacity: 1 }}
-        transition={{ duration: 1.2 }}
-      />
+    <section id="about" className="bg-dark relative overflow-hidden grid-background border-t border-border">
       <div className="container relative z-10">
-        <motion.h2
-          className="text-4xl md:text-5xl font-extrabold mb-12 text-center text-blue-800 tracking-tight"
-          initial={{ opacity: 0, y: -40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1 }}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-center mb-20"
         >
-          About Me
-        </motion.h2>
+          <h2 className="text-4xl md:text-6xl font-black mb-4 uppercase tracking-tighter">About <span className="text-primary">Me</span></h2>
+          <p className="text-gray-500 max-w-xl mx-auto font-medium">Engineer, Researcher, and Tech Enthusiast.</p>
+        </motion.div>
+
         <div className="flex flex-col md:flex-row items-center justify-center gap-16">
           {/* Profile Card */}
           <motion.div
-            className="bg-white rounded-3xl shadow-xl p-10 flex flex-col items-center w-full md:w-1/3"
-            initial={{ scale: 0.8, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            transition={{ duration: 1, type: 'spring', stiffness: 120 }}
-            whileHover={{ scale: 1.03 }}
+            className="card p-10 flex flex-col items-center w-full md:w-1/3 border-primary/20 bg-primary/5"
+            initial={{ scale: 0.9, opacity: 0 }}
+            whileInView={{ scale: 1, opacity: 1 }}
+            viewport={{ once: true }}
           >
-            <img
-              src={saquib}
-              alt="Mohammad Saquib Daiyan"
-              className="w-40 h-40 object-cover rounded-full border-4 border-blue-200 shadow-lg mb-6"
-            />
-            <span className="text-xl font-bold text-blue-800 mb-1">Mohammad Saquib Daiyan</span>
-            <span className="text-gray-500 flex items-center mb-1"><FaMapMarkerAlt className="mr-2" />Patna, Bihar, India</span>
-            <span className="text-gray-500 flex items-center mb-1"><FaEnvelope className="mr-2" />shadmanshahin6@gmail.com</span>
-            <span className="text-gray-500 flex items-center mb-1"><FaGithub className="mr-2" />saquib34</span>
-            <span className="text-gray-500 flex items-center mb-1"><FaLinkedin className="mr-2" />saquib34</span>
-            <span className="text-gray-500 flex items-center mb-1"><FaUniversity className="mr-2" />SRMIST, Chennai</span>
-            <div className="flex gap-6 mt-4">
-              <a href="https://github.com/saquib34" target="_blank" rel="noopener noreferrer" className="text-gray-800 hover:text-blue-600 text-2xl transition">
+            <div className="relative mb-6">
+              <motion.div
+                animate={{
+                  scale: [1, 1.1, 1],
+                  opacity: [0.2, 0.3, 0.2]
+                }}
+                transition={{
+                  duration: 4,
+                  repeat: Infinity,
+                  ease: "easeInOut"
+                }}
+                className="absolute inset-0 bg-primary/20 blur-2xl rounded-full"
+              />
+              <motion.img
+                src={saquib}
+                alt="Mohammad Saquib Daiyan - Software Development Engineer at Aptli AI"
+                animate={{
+                  y: [0, -10, 0],
+                  rotate: [0, 2, 0, -2, 0]
+                }}
+                transition={{
+                  duration: 6,
+                  repeat: Infinity,
+                  ease: "easeInOut"
+                }}
+                className="w-40 h-40 object-cover rounded-full border-2 border-primary relative z-10 shadow-[0_0_30px_rgba(255,221,68,0.2)]"
+              />
+            </div>
+            <h3 className="text-2xl font-black text-white mb-2 tracking-tighter">Saquib Daiyan</h3>
+            <p className="text-primary font-bold text-xs uppercase tracking-widest mb-6 px-4 py-1 bg-primary/10 rounded-full">SDE @ Aptli AI</p>
+
+            <div className="flex flex-col gap-3 w-full text-sm text-gray-400 font-medium">
+              <span className="flex items-center gap-3"><FaMapMarkerAlt className="text-primary" aria-hidden="true" /> Patna, Bihar, India</span>
+              <span className="flex items-center gap-3"><FaUniversity className="text-primary" aria-hidden="true" /> SRMIST, Chennai</span>
+            </div>
+
+            <div className="flex gap-4 mt-8">
+              <motion.a
+                whileHover={{ y: -5, scale: 1.1 }}
+                href="https://github.com/saquib34"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Saquib's GitHub Profile"
+                title="GitHub"
+                className="p-3 rounded-lg bg-dark border border-border text-white hover:border-primary hover:text-primary transition-all"
+              >
                 <FaGithub />
-              </a>
-              <a href="https://www.linkedin.com/in/saquib34" target="_blank" rel="noopener noreferrer" className="text-blue-700 hover:text-blue-500 text-2xl transition">
+              </motion.a>
+              <motion.a
+                whileHover={{ y: -5, scale: 1.1 }}
+                href="https://www.linkedin.com/in/saquib34"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Saquib's LinkedIn Profile"
+                title="LinkedIn"
+                className="p-3 rounded-lg bg-dark border border-border text-white hover:border-primary hover:text-primary transition-all"
+              >
                 <FaLinkedin />
-              </a>
-              <a href="mailto:shadmanshahin6@gmail.com" className="text-purple-700 hover:text-blue-500 text-2xl transition">
+              </motion.a>
+              <motion.a
+                whileHover={{ y: -5, scale: 1.1 }}
+                href="mailto:shadmanshahin6@gmail.com"
+                aria-label="Email Saquib"
+                title="Email"
+                className="p-3 rounded-lg bg-dark border border-border text-white hover:border-primary hover:text-primary transition-all"
+              >
                 <FaEnvelope />
-              </a>
+              </motion.a>
             </div>
           </motion.div>
-          {/* Summary and Stats Card */}
-          <motion.div
-            className="w-full md:w-2/3 flex flex-col gap-10"
-            initial={{ x: 80, opacity: 0 }}
-            animate={{ x: 0, opacity: 1 }}
-            transition={{ duration: 1, delay: 0.2 }}
-          >
+
+          {/* Bio and Education */}
+          <div className="w-full md:w-2/3">
             <motion.p
-              className="text-2xl leading-relaxed text-gray-700 font-semibold mb-4"
               initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1, delay: 0.3 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="text-2xl md:text-3xl font-bold text-gray-300 leading-tight mb-12 italic"
             >
-              Software Development Engineer, AI/ML enthusiast, and open-source contributor. I build browser-based virtualization, healthcare AI, and regional language models. IEEE-published, community mentor, and passionate about making tech accessible.
+              "I build browser-based virtualization, healthcare AI, and regional language models. Passionate about making technology high-performance and accessible."
             </motion.p>
-            {/* Stats */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12">
               {stats.map((stat, idx) => (
                 <motion.div
-                  key={stat.label}
-                  className="bg-blue-50 rounded-xl shadow p-6 flex flex-col items-center"
-                  initial={{ scale: 0.8, opacity: 0 }}
-                  animate={{ scale: 1, opacity: 1 }}
-                  transition={{ duration: 0.7, delay: 0.2 + idx * 0.1 }}
-                  whileHover={{ scale: 1.08, backgroundColor: '#e0e7ff' }}
+                  key={idx}
+                  whileHover={{ y: -5, borderColor: 'rgba(255, 221, 68, 0.5)' }}
+                  className="card p-6 text-center"
                 >
-                  <span className="text-3xl font-bold text-blue-700">
-                    {stat.value}
-                  </span>
-                  <span className="text-gray-700 mt-2 text-sm font-medium">{stat.label}</span>
+                  <span className="block text-2xl font-black text-primary mb-1">{stat.value}</span>
+                  <span className="text-[10px] font-black uppercase tracking-widest text-gray-500">{stat.label}</span>
                 </motion.div>
               ))}
             </div>
-            {/* Education Timeline */}
-            <div className="mt-6">
-              <motion.h3
-                className="text-lg font-bold text-blue-800 mb-4"
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.7, delay: 0.5 }}
-              >
-                Education
-              </motion.h3>
-              <div className="relative pl-6 border-l-4 border-blue-200">
-                {education.map((edu, idx) => (
-                  <motion.div
-                    key={edu.degree}
-                    className="mb-6 relative"
-                    initial={{ opacity: 0, x: -30 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.6, delay: 0.6 + idx * 0.1 }}
-                  >
-                    <div className="absolute -left-7 top-1.5 w-4 h-4 bg-blue-400 rounded-full border-2 border-white"></div>
-                    <div className="flex flex-col md:flex-row md:items-center md:space-x-4">
-                      <span className="font-semibold text-gray-900">{edu.degree}</span>
-                      <span className="text-gray-600">{edu.place}</span>
-                      <span className="text-gray-500 flex items-center"><FaCalendarAlt className="mr-1" />{edu.year}</span>
-                      <span className="text-blue-700 font-bold">{edu.score}</span>
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
+
+            <div className="space-y-6">
+              <h4 className="text-xs font-black uppercase tracking-[0.3em] text-gray-500 mb-4">Education Background</h4>
+              {education.map((edu, idx) => (
+                <div key={idx} className="flex gap-6 items-start">
+                  <div className="w-1 h-12 bg-border relative">
+                    <div className="absolute top-0 left-1/2 -translate-x-1/2 w-3 h-3 rounded-full bg-primary border-4 border-dark" />
+                  </div>
+                  <div>
+                    <h5 className="text-white font-bold">{edu.degree}</h5>
+                    <p className="text-sm text-gray-500 font-medium">{edu.place} <span className="mx-2 text-border">/</span> {edu.year} <span className="mx-2 text-border">/</span> <span className="text-primary">{edu.score}</span></p>
+                  </div>
+                </div>
+              ))}
             </div>
-          </motion.div>
+          </div>
         </div>
       </div>
     </section>

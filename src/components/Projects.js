@@ -1,210 +1,175 @@
-// components/Projects.js
 import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { FaArrowRight, FaTimes, FaBrain, FaTshirt, FaMouse, FaMobileAlt, FaComments, FaCar, FaChartLine, FaExclamationTriangle, FaChevronDown, FaChevronUp } from 'react-icons/fa';
+import { motion, AnimatePresence, useMotionValue, useSpring, useTransform } from 'framer-motion';
+import { FaArrowRight, FaTimes, FaBrain, FaMouse, FaMobileAlt, FaChevronDown, FaChevronUp } from 'react-icons/fa';
+
+const TiltCard = ({ children, className }) => {
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
+
+  const mouseXSpring = useSpring(x);
+  const mouseYSpring = useSpring(y);
+
+  const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], ["10deg", "-10deg"]);
+  const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ["-10deg", "10deg"]);
+
+  const handleMouseMove = (e) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const width = rect.width;
+    const height = rect.height;
+    const mouseX = e.clientX - rect.left;
+    const mouseY = e.clientY - rect.top;
+    const xPct = mouseX / width - 0.5;
+    const yPct = mouseY / height - 0.5;
+    x.set(xPct);
+    y.set(yPct);
+  };
+
+  const handleMouseLeave = () => {
+    x.set(0);
+    y.set(0);
+  };
+
+  return (
+    <motion.div
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+      style={{
+        rotateY,
+        rotateX,
+        transformStyle: "preserve-3d",
+      }}
+      className={className}
+    >
+      <div
+        style={{ transform: "translateZ(50px)" }}
+        className="relative h-full"
+      >
+        {children}
+      </div>
+    </motion.div>
+  );
+};
 
 function Projects() {
   const [selectedProject, setSelectedProject] = useState(null);
-  const [, setHoveredIndex] = useState(null);
   const [showExtra, setShowExtra] = useState(false);
 
-  // Major projects from CV/resume (main grid, always visible)
   const majorProjects = [
     {
-      title: "AI-Powered Smart Hospital Management System",
+      title: "AI-Powered Smart Hospital System",
       year: "2024",
-      tags: ["Healthcare", "Machine Learning", "Web Development"],
+      tags: ["Full Stack AI", "Cloud", "Healthcare"],
       description: [
-        "Developed comprehensive hospital management platform integrating AI for patient care",
-        "Implemented medical AI chat system with symptom analysis and clinical decision support",
-        "Created medical report analysis for blood tests and X-ray images with abnormality detection",
-        "Designed responsive dashboard with vital signs monitoring and health assessment tools"
+        "Built a centralized dashboard for hospital operations with predictive analytics for patient load.",
+        "Implemented medical AI chat system for symptom analysis and clinical decision support.",
+        "Integrated secure EHR management with encryption and deployed on AWS with high availability."
       ],
       demo: "https://health.saquib.in"
     },
     {
-      title: "WebLLM",
+      title: "WebLLM Inference Solution",
       year: "2025",
-      tags: ["ML", "AI", "Gen AI"],
+      tags: ["Browser AI", "WebGPU", "WebAssembly"],
       description: [
-        "Developed WebLLM solution for client-side AI inference, ensuring data privacy",
-        "Optimized large language models for browser-based execution with minimal latency",
-        "Implemented memory-efficient techniques for running AI models on resource-constrained devices",
-        "Created framework allowing users to utilize AI capabilities without data leaving their device"
+        "Developed a system to run large language models directly in the browser using WebGPU and WASM.",
+        "Optimized model inference for local devices with significantly reduced latency and memory footprint.",
+        "Implemented secure local data processing for privacy-focused AI applications without server-side compute."
       ],
       demo: "https://llm.saquib.in/"
     },
     {
-      title: "Live Stream Emotion Detection",
+      title: "Live Emotion Detection",
       year: "2024",
-      tags: ["Computer Vision", "Frontend Development"],
+      tags: ["Computer Vision", "Real-time", "Live Streaming"],
       description: [
-        "Built real-time emotion detection system for video streams using face-api.js and hls.js",
-        "Implemented detection for seven emotions (neutral, happy, sad, angry, fearful, disgusted, surprised)",
-        "Created visual feedback with colored bounding boxes and detailed emotion probability statistics",
-        "Optimized for performance with configurable detection frequency and input resolution"
+        "Developed real-time emotion detection for YouTube/Twitch live streams using face-api.js and hls.js.",
+        "Implemented facial expression analysis and sentiment classification for audience engagement.",
+        "Optimized inference for low-latency streaming environments and integrated with OBS software."
       ],
       demo: "https://livestramemotionanalysis.saquib.in"
-    },
-    {
-      title: "Voice and Text Emotion Analysis",
-      year: "2024",
-      tags: ["NLP", "Speech Processing"],
-      description: [
-        "Developed multimodal emotion detection system analyzing both text content and voice patterns",
-        "Implemented speech processing pipeline for tone, pitch, and vocal feature extraction",
-        "Created NLP models for sentiment and emotion classification from textual content",
-        "Integrated system with communication platforms for real-time emotional intelligence"
-      ],
-      demo: "https://emotion.saquib.in"
-    },
-    {
-      title: "Tamil Language Model (LLM)",
-      year: "2023",
-      tags: ["Natural Language Processing", "Deep Learning"],
-      description: [
-        "Building a large language model for Tamil from scratch without fine-tuning existing models",
-        "Implementing custom tokenization for Tamil script and handling complex sandhi rules",
-        "Developing specialized evaluation metrics for grammatical correctness",
-        "Using distributed computing on GPU clusters for efficient training"
-      ]
-    },
-    {
-      title: "Home Cloud Platform",
-      year: "2023",
-      tags: ["Cloud Computing", "Security"],
-      description: [
-        "Developed private cloud solution using Raspberry Pi for data sovereignty",
-        "Implemented security measures to prevent unauthorized AI model training",
-        "Created secure remote access system with robust authentication",
-        "Ensuring complete data privacy and control for users"
-      ]
-    },
-    {
-      title: "NeuroKit-Eda-Analysis Library",
-      year: "2024",
-      tags: ["Signal Processing", "Python Development"],
-      description: [
-        "Published open-source library for EDA signal analysis on PyPI",
-        "Implemented advanced signal processing techniques for psychophysiological data",
-        "Created comprehensive documentation and usage examples",
-        "Facilitating research in affective computing and biosignal analysis"
-      ]
-    },
-    {
-      title: "Healthcare Projects",
-      year: "2023-2024",
-      tags: ["Computer Vision", "Deep Learning"],
-      description: [
-        "Developed U-Net based image segmentation model achieving 85% mean IoU",
-        "Implemented YOLO-based object detection for medical imaging",
-        "Created virtual mouse system with 95% gesture recognition accuracy using MediaPipe",
-        "Developed Flutter app for café order management with AWS deployment"
-      ]
     }
   ];
 
-  // Additional/side projects (dropdown/expandable)
   const extraProjects = [
     {
+      title: "Voice & Text Emotion Detection",
+      description: "Multimodal emotion detection system analyzing both text content and voice patterns (tone, pitch).",
+      tags: ["Speech AI", "NLP", "Python"],
+      icon: <FaBrain className="text-4xl mb-4 text-primary" />,
+      demo: "https://emotion.saquib.in"
+    },
+    {
       title: "TamilLLM",
-      description: "Currently working on a Large Language Model for Tamil language processing.",
-      tags: ["NLP", "Machine Learning", "Tamil"],
-      icon: <FaBrain className="text-4xl mb-4 text-blue-500" />,
+      description: "Developing a Tamil LLM from scratch with custom tokenization and handling complex sandhi rules.",
+      tags: ["LLM", "NLP", "Tamil"],
+      icon: <FaBrain className="text-4xl mb-4 text-primary" />,
       demo: "https://llm.saquib.in/"
     },
     {
-      title: "Virtual Try-On",
-      description: "Developing an AI-powered virtual try-on system for clothing items.",
-      tags: ["Computer Vision", "Deep Learning", "E-commerce"],
-      icon: <FaTshirt className="text-4xl mb-4 text-purple-500" />,
+      title: "AI Guard",
+      description: "Security measures to prevent unauthorized AI model training and secure remote access system.",
+      tags: ["Security", "AI", "Privacy"],
+      icon: <FaBrain className="text-4xl mb-4 text-primary" />,
       demo: null
     },
     {
+      title: "NeuroKit-Eda-Analysis",
+      description: "Published open-source library for EDA signal analysis on PyPI for affective computing research.",
+      tags: ["Library", "Signal Processing"],
+      icon: <FaBrain className="text-4xl mb-4 text-primary" />,
+      demo: "https://pypi.org/project/neurokit-eda-analysis/"
+    },
+    {
       title: "AI Virtual Mouse",
-      description: "Implemented an AI-based virtual mouse system using computer vision techniques, achieving 95% accuracy in real-time hand gesture recognition.",
-      tags: ["Computer Vision", "AI", "Human-Computer Interaction"],
-      icon: <FaMouse className="text-4xl mb-4 text-green-500" />,
+      description: "95% accuracy in real-time hand gesture recognition using MediaPipe and OpenCV.",
+      tags: ["CV", "AI", "HCI"],
+      icon: <FaMouse className="text-4xl mb-4 text-primary" />,
       demo: null
     },
     {
       title: "Flutter Café App",
-      description: "Developed a Flutter app for a university café, enabling online ordering with AWS deployment and Firebase authentication.",
-      tags: ["Flutter", "AWS", "Firebase"],
-      icon: <FaMobileAlt className="text-4xl mb-4 text-orange-500" />,
-      demo: null
-    },
-    {
-      title: "Sentiment Analysis NLP",
-      description: "Implemented advanced natural language processing techniques to classify textual data into positive, negative, or neutral sentiments for diverse applications.",
-      tags: ["NLP", "Machine Learning", "Python"],
-      icon: <FaComments className="text-4xl mb-4 text-yellow-500" />,
-      demo: null
-    },
-    {
-      title: "Car Classification",
-      description: "Developed a deep learning model to classify 100,000 car images, utilizing EDA, ML models (SVM, MLP), and fine-tuning ResNet for improved accuracy.",
-      tags: ["Deep Learning", "Computer Vision", "ResNet"],
-      icon: <FaCar className="text-4xl mb-4 text-red-500" />,
-      demo: null
-    },
-    {
-      title: "E-commerce Dashboard",
-      description: "Designed and developed an interactive dashboard for an e-commerce platform, enabling real-time monitoring and analysis of sales data.",
-      tags: ["Data Visualization", "Power BI", "SQL"],
-      icon: <FaChartLine className="text-4xl mb-4 text-indigo-500" />,
-      demo: null
-    },
-    {
-      title: "Disaster Management System",
-      description: "Building a web-based disaster management system to predict and manage natural calamities using machine learning models and real-time data.",
-      tags: ["Web Development", "Machine Learning", "Disaster Management"],
-      icon: <FaExclamationTriangle className="text-4xl mb-4 text-amber-500" />,
+      description: "Order management system for university cafe with AWS deployment and online payment integration.",
+      tags: ["Flutter", "AWS", "Mobile"],
+      icon: <FaMobileAlt className="text-4xl mb-4 text-primary" />,
       demo: null
     }
   ];
 
   return (
-    <section id="projects" className="py-8 bg-gradient-to-br from-blue-50 to-purple-50 relative overflow-hidden">
-      {/* Soft background shape */}
-      <motion.div
-        className="absolute right-0 top-0 w-[400px] h-[400px] rounded-full bg-purple-100 opacity-30 z-0"
-        initial={{ scale: 0.8, opacity: 0 }}
-        animate={{ scale: 1, opacity: 1 }}
-        transition={{ duration: 1.2 }}
-      />
+    <section id="projects" className="bg-dark relative overflow-hidden grid-background border-t border-border">
       <div className="container relative z-10">
-        <motion.h2
-          className="text-4xl md:text-5xl font-extrabold mb-12 text-center text-blue-800 tracking-tight"
-          initial={{ opacity: 0, y: -30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7 }}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-center mb-20"
         >
-          Projects
-        </motion.h2>
-        {/* Main grid: major projects from CV/resume */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 mb-10">
+          <h2 className="text-4xl md:text-6xl font-black mb-4 uppercase tracking-tighter">Featured <span className="text-primary">Projects</span></h2>
+          <p className="text-gray-500 max-w-xl mx-auto font-medium">A selection of my recent works in AI, Machine Learning, and Full Stack Development.</p>
+        </motion.div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
           {majorProjects.map((proj, idx) => (
-            <motion.div
+            <TiltCard
               key={idx}
-              className="bg-white rounded-3xl shadow-xl overflow-hidden flex flex-col items-center"
-              initial={{ scale: 0.8, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              transition={{ duration: 0.7, delay: 0.1 + idx * 0.07 }}
+              className="card group cursor-pointer relative overflow-hidden"
             >
-              <div className="p-8 flex flex-col items-center">
-                <h3 className="text-xl font-bold mb-2 text-blue-800 text-center drop-shadow-lg">{proj.title}</h3>
-                <span className="text-xs text-blue-400 font-semibold mb-2">{proj.year}</span>
-                <div className="flex flex-wrap justify-center gap-2 mb-2">
-                  {proj.tags.map((tag, tagIdx) => (
-                    <span key={tagIdx} className="bg-blue-50 text-blue-800 text-xs font-semibold px-3 py-1 rounded-full shadow">
-                      {tag}
-                    </span>
-                  ))}
+              <div className="absolute inset-0 bg-gradient-to-tr from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <div className="relative z-10">
+                <div className="mb-4 flex justify-between items-start">
+                  <span className="text-xs font-bold tracking-widest text-primary uppercase">{proj.year}</span>
+                  <div className="flex gap-2">
+                    {proj.tags.map((tag, i) => (
+                      <span key={i} className="text-[10px] font-bold text-gray-500 uppercase">{tag}</span>
+                    ))}
+                  </div>
                 </div>
-                <ul className="list-disc list-inside text-gray-700 mb-2">
+                <h3 className="text-2xl font-black text-white mb-4 group-hover:text-primary transition-colors">{proj.title}</h3>
+                <ul className="text-sm text-gray-400 space-y-2 mb-6">
                   {proj.description.map((desc, dIdx) => (
-                    <li key={dIdx}>{desc}</li>
+                    <li key={dIdx} className="flex gap-2 italic">
+                      <span className="text-primary font-bold">/</span> {desc}
+                    </li>
                   ))}
                 </ul>
                 {proj.demo && (
@@ -212,172 +177,85 @@ function Projects() {
                     href={proj.demo}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-block mt-2 bg-gradient-to-r from-blue-500 to-purple-500 text-white font-semibold px-5 py-2 rounded-full shadow hover:from-purple-500 hover:to-blue-500 transition-all duration-300"
+                    aria-label={`View Live Demo of ${proj.title} project`}
+                    title={`Live Demo - ${proj.title}`}
+                    className="inline-flex items-center gap-2 text-primary font-bold text-sm uppercase tracking-widest hover:gap-3 transition-all"
                   >
-                    Preview Link <FaArrowRight className="inline ml-2" />
+                    Live Demo <FaArrowRight aria-hidden="true" />
                   </a>
                 )}
               </div>
-            </motion.div>
+            </TiltCard>
           ))}
         </div>
-        {/* Dropdown/expand button for extra projects */}
-        <div className="mb-10 flex flex-col items-center">
+
+        <div className="text-center">
           <button
-            className="flex items-center gap-2 bg-blue-100 text-blue-800 font-semibold px-6 py-3 rounded-xl shadow hover:bg-blue-200 transition-all duration-300 text-base"
             onClick={() => setShowExtra(!showExtra)}
-            aria-expanded={showExtra}
+            className="inline-flex items-center gap-2 text-gray-500 font-bold text-sm uppercase tracking-widest hover:text-white transition-all pb-2 border-b border-transparent hover:border-primary"
           >
             {showExtra ? <FaChevronUp /> : <FaChevronDown />}
-            {showExtra ? 'Hide More Projects' : 'Show More Projects'}
+            {showExtra ? 'Less Projects' : 'More Projects'}
           </button>
-          <AnimatePresence>
-            {showExtra && (
-              <motion.div
-                className="mt-6 w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10"
-                initial={{ opacity: 0, y: -20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -20 }}
-                transition={{ duration: 0.5 }}
-              >
-                {extraProjects.map((project, index) => (
-                  <motion.div
-                    key={index}
-                    className="bg-white rounded-3xl shadow-xl overflow-hidden cursor-pointer flex flex-col items-center"
-                    initial={{ scale: 0.8, opacity: 0 }}
-                    animate={{ scale: 1, opacity: 1 }}
-                    exit={{ scale: 0.8, opacity: 0 }}
-                    transition={{ duration: 0.7, delay: 0.1 + index * 0.07 }}
-                    whileHover={{ y: -8, scale: 1.04, boxShadow: '0 12px 32px rgba(59,130,246,0.10)' }}
-                    onClick={() => setSelectedProject(project)}
-                    onMouseEnter={() => setHoveredIndex(index)}
-                    onMouseLeave={() => setHoveredIndex(null)}
-                  >
-                    <div className="p-8 flex flex-col items-center">
-                      {project.icon && (
-                        <motion.div
-                          animate={{ rotate: [0, 10, -10, 0] }}
-                          transition={{ duration: 3, repeat: Infinity, repeatType: 'loop', delay: index * 0.1 }}
-                        >
-                          {project.icon}
-                        </motion.div>
-                      )}
-                      <h3 className="text-xl font-bold mb-2 text-blue-800 text-center drop-shadow-lg">{project.title}</h3>
-                      {project.year && <span className="text-xs text-blue-400 font-semibold mb-2">{project.year}</span>}
-                      <div className="flex flex-wrap justify-center gap-2 mb-2">
-                        {project.tags.map((tag, tagIndex) => (
-                          <motion.span
-                            key={tagIndex}
-                            className="bg-blue-50 text-blue-800 text-xs font-semibold px-3 py-1 rounded-full shadow hover:bg-blue-100 transition-all duration-200"
-                            whileHover={{ scale: 1.13 }}
-                            whileTap={{ scale: 0.97 }}
-                          >
-                            {tag}
-                          </motion.span>
-                        ))}
-                      </div>
-                      {project.description && Array.isArray(project.description) ? (
-                        <ul className="list-disc list-inside text-gray-700 mb-2">
-                          {project.description.map((desc, dIdx) => (
-                            <li key={dIdx}>{desc}</li>
-                          ))}
-                        </ul>
-                      ) : (
-                        <p className="text-gray-600 mb-4 text-center">{project.description}</p>
-                      )}
-                      {project.demo && (
-                        <a
-                          href={project.demo}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="inline-block mt-2 bg-gradient-to-r from-blue-500 to-purple-500 text-white font-semibold px-5 py-2 rounded-full shadow hover:from-purple-500 hover:to-blue-500 transition-all duration-300"
-                        >
-                          Preview Link <FaArrowRight className="inline ml-2" />
-                        </a>
-                      )}
-                    </div>
-                  </motion.div>
-                ))}
-              </motion.div>
-            )}
-          </AnimatePresence>
         </div>
-        {/* Modal for extra/main projects (unchanged) */}
+
         <AnimatePresence>
-          {selectedProject && (
+          {showExtra && (
             <motion.div
-              className="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center p-4 z-50"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: 'auto' }}
+              exit={{ opacity: 0, height: 0 }}
+              className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12 overflow-hidden"
             >
-              <motion.div
-                className="bg-white rounded-2xl p-10 max-w-3xl w-full shadow-2xl relative"
-                initial={{ y: 50, opacity: 0, scale: 0.9 }}
-                animate={{ y: 0, opacity: 1, scale: 1 }}
-                exit={{ y: 50, opacity: 0, scale: 0.9 }}
-                transition={{ type: "spring", stiffness: 300, damping: 30 }}
-              >
-                <div className="flex justify-between items-center mb-6">
-                  <div className="flex items-center">
-                    {selectedProject.icon}
-                    <h3 className="text-3xl font-bold text-blue-800 ml-4">{selectedProject.title}</h3>
-                  </div>
-                  <motion.button
-                    whileHover={{ scale: 1.1, rotate: 90 }}
-                    whileTap={{ scale: 0.9 }}
-                    onClick={() => setSelectedProject(null)}
-                    className="ml-4"
-                  >
-                    <FaTimes className="text-gray-600 text-2xl" />
-                  </motion.button>
-                </div>
-                {selectedProject.description && Array.isArray(selectedProject.description) ? (
-                  <ul className="list-disc list-inside text-gray-700 mb-6 text-lg">
-                    {selectedProject.description.map((desc, dIdx) => (
-                      <li key={dIdx}>{desc}</li>
+              {extraProjects.map((proj, idx) => (
+                <div key={idx} className="card bg-dark/50" onClick={() => setSelectedProject(proj)}>
+                  {proj.icon}
+                  <h3 className="text-xl font-bold text-white mb-2">{proj.title}</h3>
+                  <p className="text-sm text-gray-400 mb-4 line-clamp-2">{proj.description}</p>
+                  <div className="flex flex-wrap gap-2">
+                    {proj.tags.map((t, i) => (
+                      <span key={i} className="text-[10px] font-bold text-gray-600 uppercase border border-border px-2 py-0.5 rounded">{t}</span>
                     ))}
-                  </ul>
-                ) : (
-                  <p className="text-gray-700 mb-6 text-lg">{selectedProject.description}</p>
-                )}
-                <div className="flex flex-wrap mb-6 gap-2">
-                  {selectedProject.tags && selectedProject.tags.map((tag, tagIndex) => (
-                    <motion.span
-                      key={tagIndex}
-                      className="bg-blue-50 text-blue-800 text-sm font-semibold px-3 py-1 rounded-full shadow"
-                      whileHover={{ scale: 1.1 }}
-                      whileTap={{ scale: 0.95 }}
-                    >
-                      {tag}
-                    </motion.span>
-                  ))}
+                  </div>
                 </div>
-                {selectedProject.demo && (
-                  <motion.a
-                    href={selectedProject.demo}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-block bg-gradient-to-r from-blue-500 to-purple-500 text-white font-semibold px-6 py-3 rounded-full shadow hover:from-purple-500 hover:to-blue-500 transition-all duration-300 mt-2"
-                    whileHover={{ scale: 1.08 }}
-                    whileTap={{ scale: 0.97 }}
-                  >
-                    Live Demo <FaArrowRight className="inline ml-2" />
-                  </motion.a>
-                )}
-                <motion.button
-                  className="mt-8 bg-gray-200 text-gray-700 py-2 px-6 rounded-full font-semibold hover:bg-gray-300 transition duration-300"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  onClick={() => setSelectedProject(null)}
-                >
-                  Close
-                </motion.button>
-              </motion.div>
+              ))}
             </motion.div>
           )}
         </AnimatePresence>
       </div>
+
+      <AnimatePresence>
+        {selectedProject && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 bg-dark/95 backdrop-blur-xl z-[100] flex items-center justify-center p-6"
+            onClick={() => setSelectedProject(null)}
+          >
+            <motion.div
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.9, opacity: 0 }}
+              className="card max-w-2xl w-full relative"
+              onClick={e => e.stopPropagation()}
+            >
+              <button onClick={() => setSelectedProject(null)} className="absolute top-6 right-6 text-2xl text-gray-500 hover:text-white"><FaTimes /></button>
+              <div className="mb-4">{selectedProject.icon}</div>
+              <h2 className="text-4xl font-black text-white mb-4">{selectedProject.title}</h2>
+              <p className="text-lg text-gray-400 mb-8 font-medium">{selectedProject.description}</p>
+              <div className="flex flex-wrap gap-3 mb-8">
+                {selectedProject.tags.map((t, i) => (
+                  <span key={i} className="bg-primary text-dark font-black text-xs px-4 py-1.5 rounded-full uppercase tracking-tighter">{t}</span>
+                ))}
+              </div>
+              {selectedProject.demo && (
+                <a href={selectedProject.demo} target="_blank" rel="noopener noreferrer" className="bg-primary text-dark font-bold px-8 py-3 rounded-xl hover:scale-105 transition-all inline-block">Visit Project</a>
+              )}
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 }

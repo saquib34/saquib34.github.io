@@ -1,70 +1,89 @@
-# Getting Started with Create React App
+# Mohammad Saquib Daiyan | SDE @ Aptli AI
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+[![Website](https://img.shields.io/badge/Website-saquib.in-FFDD44?style=for-the-badge&logoColor=black)](https://saquib.in)
+[![npm](https://img.shields.io/badge/npm-saquib-C084FC?style=for-the-badge&logoColor=white)](https://www.npmjs.com/package/saquib)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Saquib-0077B5?style=for-the-badge&logo=linkedin)](https://linkedin.com/in/saquib34)
 
-## Available Scripts
+Modern, high-performance portfolio website built with React, Framer Motion, and Tailwind CSS. Featuring advanced AI-driven SEO and a cross-platform CLI business card.
 
-In the project directory, you can run:
+## 🚀 Quick Start (CLI Card)
 
-### `npm start`
+You can check out my professional card directly in your terminal:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+```bash
+npx saquib
+```
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+---
 
-### `npm test`
+## ✨ Features
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### 🎨 Premium UI/UX
+- **Dark Aesthetic**: Modern dark theme with grid background and interactive radial beams.
+- **3D Interactive Cards**: Projects featured with a high-end tilt effect and dynamic lighting using Framer Motion.
+- **Micro-animations**: Staggered reveals, typewriter effects, and parallax backgrounds for a fluid user experience.
 
-### `npm run build`
+### 🔍 Advanced & AI SEO
+- **Deep Indexing**: Fully optimized with Canonical URLs, Open Graph, and Twitter Cards for social visibility.
+- **AI-Ready**: Explicitly configured for AI crawlers (GPTBot, Gemini) and semantic scholarly markup.
+- **JSON-LD Knowledge Graph**: Implements Google-recognized structured data for Person, ScholarlyArticle, and SoftwareSourceCode schemas.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### 💻 Technical Stack
+- **Frontend**: React 18, Tailwind CSS, Framer Motion
+- **Tooling**: CRApp, PostCSS
+- **SEO**: JSON-LD Structured Data, Sitemap.xml, PWA Manifest
+- **CLI**: Node.js executable with ANSI-colored terminal formatting
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+---
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## 🛠️ Installation & Setup
 
-### `npm run eject`
+If you want to run the portfolio locally:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+1. **Clone the repo:**
+   ```bash
+   git clone https://github.com/saquib34/saquib34.github.io.git
+   ```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+2. **Install dependencies:**
+   ```bash
+   npm install
+   ```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+3. **Start the development server:**
+   ```bash
+   npm start
+   ```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+4. **Build for production:**
+   ```bash
+   npm run build
+   ```
 
-## Learn More
+---
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## 📑 Key Projects
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- **AI-Powered Smart Hospital System**: Comprehensive management platform with ML-driven patient load prediction.
+- **WebLLM Inference**: Browser-native LLM execution using WebGPU and WASM.
+- **TamilLLM**: Developing a Large Language Model for Tamil from scratch.
+- **NeuroKit-Eda-Analysis**: Open-source signal processing library published on PyPI.
 
-### Code Splitting
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## 📄 Research & Publications
 
-### Analyzing the Bundle Size
+**"A Novel Automated Model to Detect Real-Time Deepfake Using Computer Vision"**
+*Published in IEEE (2024)*
+[Read Paper](https://ieeexplore.ieee.org/document/11209202)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+---
 
-### Making a Progressive Web App
+## 📬 Contact me
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+- **Email**: shadmanshahin6@gmail.com
+- **Website**: [saquib.in](https://saquib.in)
+- **LinkedIn**: [saquib34](https://linkedin.com/in/saquib34)
 
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+---
+*Built with ❤️ by Mohammad Saquib Daiyan*

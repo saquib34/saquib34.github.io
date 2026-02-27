@@ -1,54 +1,43 @@
-// components/Achievements.js
 import React from 'react';
 import { motion } from 'framer-motion';
-import { FaTrophy } from 'react-icons/fa';
+import { FaTrophy, FaAward, FaMedal, FaCrown, FaStar } from 'react-icons/fa';
 
 function Achievements() {
   const items = [
-    { text: "Ranked 2nd in AI Hackathon (ABINITO)", color: "bg-blue-100" },
-    { text: "Ranked 2nd in EDA in CODE BATTLE", color: "bg-green-100" },
-    { text: "Won IIITD Hackathon organized on Kaggle", color: "bg-yellow-100" },
-    { text: "Ranked 13th worldwide in ML OLYMPIAD", color: "bg-purple-100" },
-    { text: "Contributor to GDSC website of SRM Ramapuram", color: "bg-red-100" },
+    { text: "Ranked 2nd in AI Hackathon (ABINITO)", icon: <FaAward className="text-primary text-3xl" /> },
+    { text: "Ranked 2nd in EDA in CODE BATTLE", icon: <FaMedal className="text-primary text-3xl" /> },
+    { text: "Won IIITD Hackathon organized on Kaggle", icon: <FaTrophy className="text-primary text-3xl" /> },
+    { text: "Ranked 13th worldwide in ML OLYMPIAD", icon: <FaCrown className="text-primary text-3xl" /> },
+    { text: "Contributor to GDSC website of SRM Ramapuram", icon: <FaStar className="text-primary text-3xl" /> },
   ];
 
   return (
-    <section id="achievements" className="py-16 bg-gradient-to-br from-purple-50 to-blue-100 relative overflow-hidden">
-      {/* Soft background shape */}
-      <motion.div
-        className="absolute left-[-60px] top-[-60px] w-[220px] h-[220px] rounded-full bg-purple-200 opacity-30 blur-2xl z-0"
-        initial={{ scale: 0.8, opacity: 0 }}
-        animate={{ scale: 1, opacity: 1 }}
-        transition={{ duration: 1.2 }}
-      />
-      <motion.div
-        className="absolute right-[-80px] bottom-[-80px] w-[260px] h-[260px] rounded-full bg-blue-200 opacity-30 blur-2xl z-0"
-        initial={{ scale: 0.8, opacity: 0 }}
-        animate={{ scale: 1, opacity: 1 }}
-        transition={{ duration: 1.2, delay: 0.3 }}
-      />
+    <section id="achievements" className="bg-dark relative overflow-hidden grid-background border-t border-border">
       <div className="container relative z-10">
-        <motion.h2
-          className="text-4xl md:text-5xl font-extrabold mb-10 text-center text-purple-800 tracking-tight"
-          initial={{ opacity: 0, y: -30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7 }}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-center mb-20"
         >
-          <FaTrophy className="inline-block text-yellow-500 text-4xl mb-2 mr-2" />
-          Achievements
-        </motion.h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <h2 className="text-4xl md:text-6xl font-black mb-4 uppercase tracking-tighter">My <span className="text-primary">Achievements</span></h2>
+          <p className="text-gray-500 max-w-xl mx-auto font-medium">Recognition and awards in global and national competitions.</p>
+        </motion.div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {items.map((item, index) => (
             <motion.div
               key={index}
-              className={`rounded-3xl shadow-xl border border-purple-100/40 p-8 flex flex-col items-center gap-4 relative overflow-hidden bg-white/90 ${item.color} hover:scale-105 transition-transform duration-300 animate-fade-in`}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.7, delay: index * 0.1 }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              className="card group hover:border-primary/50 transition-all flex items-center gap-6"
             >
-              <FaTrophy className="text-yellow-400 text-3xl mb-2" />
-              <p className="text-lg font-semibold text-purple-900 text-center">{item.text}</p>
+              <div className="flex-shrink-0 w-16 h-16 rounded-xl bg-primary/5 border border-border flex items-center justify-center group-hover:rotate-12 transition-transform duration-500">
+                {item.icon}
+              </div>
+              <p className="text-lg font-bold text-white leading-tight group-hover:text-primary transition-colors">{item.text}</p>
             </motion.div>
           ))}
         </div>

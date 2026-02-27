@@ -1,27 +1,29 @@
 import React from 'react';
-import { FaLinkedin, FaGithub, FaFilePdf } from 'react-icons/fa';
+import { FaLinkedin, FaGithub, FaEnvelope } from 'react-icons/fa';
 
-const Footer = () => {
+function Footer() {
   return (
-    <footer className="bg-white border-t border-gray-200 py-8 mt-12">
-      <div className="container text-center flex flex-col items-center gap-4">
-        <div className="flex gap-6 justify-center mb-2">
-          <a href="https://www.linkedin.com/in/saquib34" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="text-blue-700 text-2xl hover:text-blue-500 transition">
+    <footer className="bg-dark border-t border-border py-12 relative overflow-hidden">
+      <div className="container relative z-10 flex flex-col items-center gap-8">
+        <div className="flex gap-4">
+          <a href="https://www.linkedin.com/in/saquib34" target="_blank" rel="noopener noreferrer" className="p-3 rounded-lg bg-white/5 border border-border text-gray-400 hover:border-primary hover:text-primary transition-all">
             <FaLinkedin />
           </a>
-          <a href="https://github.com/saquib34" target="_blank" rel="noopener noreferrer" aria-label="GitHub" className="text-gray-800 text-2xl hover:text-blue-500 transition">
+          <a href="https://github.com/saquib34" target="_blank" rel="noopener noreferrer" className="p-3 rounded-lg bg-white/5 border border-border text-gray-400 hover:border-primary hover:text-primary transition-all">
             <FaGithub />
           </a>
-          <a href="/CV.pdf" target="_blank" rel="noopener noreferrer" aria-label="CV" className="text-red-600 text-2xl hover:text-blue-500 transition">
-            <FaFilePdf />
+          <a href="mailto:shadmanshahin6@gmail.com" className="p-3 rounded-lg bg-white/5 border border-border text-gray-400 hover:border-primary hover:text-primary transition-all">
+            <FaEnvelope />
           </a>
         </div>
-        <p className="text-gray-500 text-sm">
-          &copy; {new Date().getFullYear()} Mohammad Saquib Daiyan. All rights reserved.
-        </p>
+        <div className="text-center">
+          <p className="text-[10px] font-black uppercase tracking-[0.3em] text-gray-600">
+            &copy; {new Date().getFullYear()} Saquib Daiyan <span className="mx-2 text-border">/</span> Built with React & Tailwind
+          </p>
+        </div>
       </div>
     </footer>
   );
-};
+}
 
 export default Footer;
