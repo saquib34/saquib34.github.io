@@ -1,10 +1,11 @@
 import React, { useRef } from 'react';
-import { motion, useScroll, useTransform, useMotionValue, useSpring, AnimatePresence } from 'framer-motion';
+import { motion, useScroll, useTransform, useMotionValue, useSpring } from 'framer-motion';
 import { FaArrowRight, FaTerminal } from 'react-icons/fa';
+
+const commands = ["!pip install NeuroKit-Eda-Analysis", "npm i saquib"];
 
 const CommandTerminal = () => {
   const [currentCommand, setCurrentCommand] = React.useState(0);
-  const commands = ["!pip install NeuroKit-Eda-Analysis", "npm i saquib"];
   const [displayText, setDisplayText] = React.useState("");
 
   React.useEffect(() => {
